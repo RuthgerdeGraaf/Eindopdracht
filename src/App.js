@@ -1,5 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import LoginButton from "./components/button/loginButton/LoginButton.jsx";
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"></link>
 
 function App() {
   return (
@@ -8,6 +11,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
+          <LoginButton />
         </p>
         <a
           className="App-link"
