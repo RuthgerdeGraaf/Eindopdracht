@@ -1,8 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import LoginButton from "./components/button/loginButton/LoginButton.jsx";
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"></link>
+import Button from "./components/button/Button";
 
 function App() {
   return (
@@ -11,7 +10,24 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          <LoginButton />
+          <div>
+            <Button variant="login">Login</Button>
+            <Button variant="next">Next</Button>
+            <Button variant="previous">Previous</Button>
+            <Button variant="return" icon="return">
+
+            </Button>
+            <Button
+              variant="secondary"
+              icon={
+                <span role="img" aria-label="star">
+                  ⭐
+                </span>
+              }
+            >
+              Button with Icon
+            </Button>
+          </div>
         </p>
         <a
           className="App-link"
