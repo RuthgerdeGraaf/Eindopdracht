@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Button from "./components/button/Button";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -14,19 +15,7 @@ function App() {
             <Button variant="login">Login</Button>
             <Button variant="next">Next</Button>
             <Button variant="previous">Previous</Button>
-            <Button variant="return" icon="return">
-
-            </Button>
-            <Button
-              variant="secondary"
-              icon={
-                <span role="img" aria-label="star">
-                  ⭐
-                </span>
-              }
-            >
-              Button with Icon
-            </Button>
+            <Button variant="return" icon="return"></Button>
           </div>
         </p>
         <a
@@ -38,6 +27,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Footer />
     </div>
   );
 }
