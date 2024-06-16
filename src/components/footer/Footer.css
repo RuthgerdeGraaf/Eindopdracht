@@ -6,6 +6,7 @@
     align-items: center;
     color: white;
     overflow: hidden;
+    z-index: 1;
 }
 
 .footer::before {

@@ -1,44 +1,45 @@
+/* Stijlen voor het hele App container */
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   text-align: center;
-  width: 100%;
-  height: 100vh;
-  max-height: 100vh;
+  max-width: 100vw;
   overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Stijlen voor de main content */
+.App-main {
+  flex: 1;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #F2F3D9;
-  min-height: 100vh;
+/* Stijlen voor de footer */
+.App-footer {
+  position: relative;
+  height: 48px;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.App-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: linear-gradient(to top left, #FFA800 50%, #F2F3D9 50%);
+  z-index: -1;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.App-footer p {
+  margin: 0;
+  z-index: 1;
+  padding-right: 16px;
+  padding-top: 8px;
 }

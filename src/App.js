@@ -1,37 +1,33 @@
 import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Button from "./components/button/Button";
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
+import Header from "../src/components/header/Header";
+import Footer from "../src/components/footer/Footer";
+import Home from "../src/pages/Home";
+import Favorite from "../src/pages/Favorite"
+import Collection from "../src/pages/Collection";
+import Settings from "../src/pages/Settings";
+import PlayStationPage from "../src/pages/playstation/PlaystationPage.jsx";
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
+    <Router>
+      <div className="App">
         <Header />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          <div>
-            <Button variant="login">Login</Button>
-            <Button variant="next">Next</Button>
-            <Button variant="previous">Previous</Button>
-            <Button variant="return" icon="return"></Button>
-          </div>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Footer />
-    </div>
+        <main className="App-main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/favorite" element={<Favorite />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/playstation" element={<PlayStationPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
