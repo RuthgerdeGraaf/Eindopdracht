@@ -1,23 +1,20 @@
-// src/styles/_vars.scss
-
-$primary: #ff0044;
-$grey: #747373;
-
-$print_red: #ff0048;
-$print_red_shade: #e20845;
-$print_yellow: #fabc43;
-$print_green: #91ae8f;
-$print_blue: #5394a7;
-$print_brown: #d3a383;
-$print_grey: #747373;
-$print_dark: #4d4c4c;
-$print_lgrey: #bfbdbd;
-$print_white: #ffffff;
-$print_shadow: #00000014;
-$print_vlgrey: #F9F9F9;
+$primary_red: #9C0902;
+$play_red: #ff0048;
+$play_red_shade: #e20845;
+$play_yellow: #fabc43;
+$play_green: #91ae8f;
+$play_blue: #5394a7;
+$play_brown: #d3a383;
+$play_grey: #747373;
+$play_dark: #4d4c4c;
+$play_lgrey: #bfbdbd;
+$play_white: #ffffff;
+$play_shadow: #00000014;
+$play_vlgrey: #F9F9F9;
+$play_black: #000000;
 
 $base-grid: 8px;
 $base-padding: $base-grid * 8 3vw;
 $base-width: 160ch;
 $base-radius: 8px;
-$base-shadow: 0px 227px 136px 0px $print_shadow;
+$base-shadow: 0px 227px 136px 0px $play_shadow;

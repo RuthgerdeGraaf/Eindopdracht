@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css';
+import './Button.scss';
 import Icon from '../../icons/Icon';
 
 const Button = ({ variant, children, disabled, icon, ...props }) => {
