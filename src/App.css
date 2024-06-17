@@ -43,3 +43,17 @@
   padding-right: 16px;
   padding-top: 8px;
 }
+
+/* Dark mode stijlen */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode .App-footer {
+  background: linear-gradient(to top left, #333 50%, #555 50%);
+}
+
+.dark-mode .App-footer p {
+  color: #ddd;
+}
