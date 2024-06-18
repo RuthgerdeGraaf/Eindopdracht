@@ -9,7 +9,6 @@ import Favorite from "../src/pages/Favorite";
 import Collection from "../src/pages/Collection";
 import Settings from "../src/pages/Settings";
 import PlayStationPage from "../src/pages/playstation/PlaystationPage.jsx";
-import DarkModeButton from "../src/components/button/DarkModeButton";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -19,23 +18,24 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-        <Header />
-        <main className="App-main">
-          <DarkModeButton darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/favorite" element={<Favorite />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/playstation" element={<PlayStationPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <>
+      <Router>
+        <div className={`App ${darkMode ? "dark-mode" : ""}`}>
+          <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <main className="App-main">
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/favorite" element={<Favorite />} />
+              <Route path="/collection" element={<Collection />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/playstation" element={<PlayStationPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </>
   );
 };
 

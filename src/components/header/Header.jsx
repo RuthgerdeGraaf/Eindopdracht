@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
-const Header = () => {
+const Header = ({ darkMode, toggleDarkMode }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleMouseEnter = () => {
@@ -29,12 +29,15 @@ const Header = () => {
                     {isOpen && (
                         <ul className="dropdown">
                             <li><Link to="/">Home</Link></li>
-          <li><Link to="/favorite">Favorite</Link></li>
-          <li><Link to="/collection">Collection</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
+                            <li><Link to="/favorite">Favorite</Link></li>
+                            <li><Link to="/collection">Collection</Link></li>
+                            <li><Link to="/settings">Settings</Link></li>
                         </ul>
                     )}
                 </div>
+                <button onClick={toggleDarkMode}>
+                    {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                </button>
             </nav>
         </header>
     );

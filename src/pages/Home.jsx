@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import computerImage from '../img/Computer.png';
-import playstationImage from '../img/Playstation.png';
-import xboxImage from '../img/Xbox.png';
-import nintendoImage from '../img/Switch.png';
-import mobileImage from '../img/Mobile.png';
-import everythingImage from '../img/Everything.png';
+import computerImage from '../img/Computer.jpeg';
+import playstationImage from '../img/Playstation.jpeg';
+import xboxImage from '../img/Xbox.jpeg';
+import nintendoImage from '../img/Switch.jpeg';
+import mobileImage from '../img/Mobile.jpeg';
+import everythingImage from '../img/Everything.jpeg';
 
 const Home = () => {
   return (
