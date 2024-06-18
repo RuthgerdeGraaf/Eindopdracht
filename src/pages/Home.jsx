@@ -13,22 +13,22 @@ const Home = () => {
       <h2>Ready to play a game?</h2>
         <div>
           <Link to="/playstation">
-          <img src={playstationImage} className='round-image' alt="playstation" width="200px" height="200px" />
+          <img src={playstationImage} className='round-image' alt="playstation" />
         </Link>
         <Link to="/xbox">
-          <img src={xboxImage} alt="xbox" width="200px" height="200px" />
+          <img src={xboxImage} className='round-image' alt="xbox"/>
         </Link>
         <Link to="/nintendo">
-          <img src={nintendoImage} alt="nintendo" width="200px" height="200px" />
+          <img src={nintendoImage} className='round-image' alt="nintendo"/>
         </Link>
         <Link to="/computer">
-          <img src={computerImage} alt="computer" width="200px" height="200px" />
+          <img src={computerImage} className='round-image' alt="computer"/>
         </Link>
         <Link to="/mobile">
-          <img src={mobileImage} alt="mobile" width="200px" height="200px" />
+          <img src={mobileImage} className='round-image' alt="mobile"/>
         </Link>
         <Link to="/everything">
-          <img src={everythingImage} alt="everything" width="200px" height="200px" />
+          <img src={everythingImage} className='round-image' alt="everything"/>
         </Link>
       </div>
     </div>

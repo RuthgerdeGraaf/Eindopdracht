@@ -1,4 +1,3 @@
-// src/styles/App.scss
 @import 'src/styles/vars';
 
 .App {
@@ -11,13 +10,11 @@
   background-color: $play_green;
 }
 
-/* Stijlen voor de main content */
 .App-main {
   flex: 1;
   padding: 20px;
 }
 
-/* Stijlen voor de footer */
 .App-footer {
   position: relative;
   height: 48px;
