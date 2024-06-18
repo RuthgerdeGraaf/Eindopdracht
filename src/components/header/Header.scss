@@ -1,7 +1,7 @@
 @import 'src/styles/vars';
 
 .header {
-    background-color: #FFF8E9;
+    background-color: $play_blue;
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -10,8 +10,14 @@
     color: red;
     text-align: center;
     padding: 10px 20px;
-    font-size: large;
+    font-size: 28px;
     z-index: 1;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 24px;
+    }
 }
 
 .header h1 {
@@ -33,15 +39,17 @@ nav {
 .dropdown-button {
     position: relative;
     display: inline-block;
-    padding: 10px 59px;
+    padding: 10px 46px;
     margin-right: 50px;
     cursor: pointer;
-    background-color: #FFF8E9;
+    background-color: $play_blue;
     border-radius: 4px;
+    color: $play_yellow;
+    font-weight: 500;
 }
 
 .dropdown-button:hover {
-    background-color: #d7d7d7;
+    background-color: $play_dark;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -51,7 +59,7 @@ nav {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #ffffff;
+    background-color: $play_blue;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     padding: 0;
@@ -61,7 +69,6 @@ nav {
     width: 150px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
-
 }
 
 .dropdown-button:hover ul {
@@ -82,4 +89,9 @@ nav {
 
 .dropdown ul li:hover {
     background-color: #ddd;
+}
+.dark-mode-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
