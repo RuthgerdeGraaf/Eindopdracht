@@ -18,18 +18,18 @@
 }
 
 .button.login:hover {
-    color: #AD0000;
+    color: $play_red;
 }
 
 .button.next {
-    color: #AD0000;
+    color: $play_red;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
     width: 100px;
 }
 
 .button.previous {
-    color: #AD0000;
+    color: $play_red;
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
     width: 100px;

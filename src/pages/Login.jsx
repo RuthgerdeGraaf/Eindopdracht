@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import button from '../components/button/Button.scss';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -29,7 +30,7 @@ const Login = () => {
                     <label>Password:</label>
                     <input type="password" value={password} onChange={handlePasswordChange} />
                 </div>
-                <button type="submit">Login</button>
+                <button className="button login" type="submit">Login</button>
             </form>
         </div>
     );
