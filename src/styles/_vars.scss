@@ -23,3 +23,11 @@ $play_black: #000000;
     max-width: 300px; 
     max-height: 300px;
 }
+.small-round-image {
+    width: auto;
+    border-radius: 50%;
+    padding: auto;
+    object-fit: cover;
+    max-width: 150px; 
+    max-height: 150px;
+}
