@@ -1,19 +1,11 @@
-$primary_red: #9C0902;
-$play_red: #ff0048;
-$play_red_shade: #e20845;
-$play_yellow: #fabc43;
-$play_green: #91ae8f;
-$play_blue: #5394a7;
-$play_brown: #d3a383;
-$play_grey: #747373;
-$play_dark: #4d4c4c;
-$play_lgrey: #bfbdbd;
-$play_white: #ffffff;
-$play_shadow: #00000014;
-$play_vlgrey: #F9F9F9;
-$play_black: #000000;
-
-
+$dark: #1d1d1d;
+$darkbluegreen: #273b40;
+$lightbluegreen: #208c8c;
+$light: #cae9ae;
+$grey: #3c4748;
+$metal: #AAA9AD;
+$gold: #DBAC34;
+$play_red: red;
 
 .round-image {
     width: 100%;
@@ -35,7 +27,7 @@ $play_black: #000000;
 }
 .return-button {
     background-color: transparent;
-    color: $play_white;
+    color: $play_red;
     border: none;
     border-radius: 4px;
     cursor: pointer;
