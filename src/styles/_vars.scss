@@ -16,18 +16,29 @@ $play_black: #000000;
 
 
 .round-image {
-    width: auto;
-    border-radius: 50%;
-    padding: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 20%;
+    padding: 10px;
     object-fit: cover;
     max-width: 300px; 
-    max-height: 300px;
 }
 .small-round-image {
     width: auto;
+    height: auto;
     border-radius: 50%;
     padding: auto;
     object-fit: cover;
     max-width: 150px; 
     max-height: 150px;
+    margin:auto;
+}
+.return-button {
+    background-color: transparent;
+    color: $play_white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+    margin: 10px;
 }

@@ -9,10 +9,10 @@ import "./App.scss";
 import Header from "../src/components/header/Header";
 import Footer from "../src/components/footer/Footer";
 import Login from "./pages/login/Login.jsx";
-import Home from "../src/pages/Home";
-import Favorite from "../src/pages/Favorite";
-import Collection from "../src/pages/Collection";
-import Settings from "../src/pages/Settings";
+import Home from "../src/pages/home/Home";
+import Favorite from "./pages/favorite/Favorite.jsx";
+import Collection from "./pages/collection/Collection.jsx";
+import Settings from "./pages/settings/Settings.jsx";
 import PlayStationPage from "../src/pages/playstation/PlaystationPage.jsx";
 
 const App = () => {
