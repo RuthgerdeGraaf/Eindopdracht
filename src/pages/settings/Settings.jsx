@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Avatar from '../../components/avatar/Avatar';
 
 function Settings() {
   const [avatar, setAvatar] = useState(null);
@@ -30,7 +31,7 @@ function Settings() {
       <h1>Settings</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="avatar">Avatar:</label>
+          <Avatar className='avatar' />
           <input type="file" id="avatar" onChange={handleAvatarChange} />
         </div>
         <div>

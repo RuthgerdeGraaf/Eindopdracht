@@ -28,7 +28,7 @@ $gold: #DBAC34;
     width: 250px;
     height: 40px;
     background-color: $lightbluegreen;
-    color: #fff;
+    color: $light;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -42,4 +42,14 @@ $gold: #DBAC34;
     cursor: pointer;
     z-index: 1;
     margin: 10px;
+}
+.avatar {
+   width: 24px;
+   height: 24px;
+   border-radius: 50%;
+    &.small {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+    }
 }

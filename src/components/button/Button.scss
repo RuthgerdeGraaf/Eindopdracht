@@ -9,11 +9,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFA800;
+    background-color: $lightbluegreen;
 }
 
 .button.login {
-    color: #FFA800;
+    color: $lightbluegreen;
     border-radius: 15px;
 }
 
@@ -36,20 +36,20 @@
 }
 
 .button.next:hover {
-    background-color: #D9BB80;
-    color: black;
+    background-color: $light;
+    color: $dark;
 }
 
 .button.previous:hover {
-    background-color: #D9BB80;
-    color: black;
+    background-color: $light;
+    color: $dark;
 }
 
 .button.return {
     background-color: transparent;
-    border: solid 5px black;
+    border: solid 5px $dark;
     border-radius: 100%;
-    color: black;
+    color: $dark;
     padding: 0;
     margin: auto;
 }

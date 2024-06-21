@@ -43,11 +43,10 @@
   padding-right: 16px;
   padding-top: 8px;
 }
-
 /* Dark mode stijlen */
 .dark-mode {
   background-color: $dark;
-  color: $light;
+  color: $lightbluegreen;
 }
 
 .dark-mode .App-footer {
@@ -55,5 +54,5 @@
 }
 
 .dark-mode .App-footer p {
-  color: $light;
+  color: $lightbluegreen;
 }

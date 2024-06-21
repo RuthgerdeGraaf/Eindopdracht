@@ -3,8 +3,8 @@ import React from 'react';
 const Collection = () => {
   return (
     <div>
-      <h2>Collection</h2>
-      <p>This is the Collection Page.</p>
+      <h1>Collection Page</h1>
+      {/* Add your collection information here */}
     </div>
   );
 };
