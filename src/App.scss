@@ -7,7 +7,7 @@
   text-align: center;
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: $play_red;
+  background-color: $light;
 }
 
 .App-main {
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: white;
+  color: $light;
   overflow: hidden;
   z-index: 1;
 }
@@ -33,7 +33,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top left, #FFA800 50%, #FFF8E9 50%);
+  background: linear-gradient(to top left, $gold 50%, #FFF8E9 50%);
   z-index: -1;
 }
 
@@ -46,8 +46,8 @@
 
 /* Dark mode stijlen */
 .dark-mode {
-  background-color: #121212;
-  color: white;
+  background-color: $dark;
+  color: $light;
 }
 
 .dark-mode .App-footer {
@@ -55,5 +55,5 @@
 }
 
 .dark-mode .App-footer p {
-  color: #ddd;
+  color: $light;
 }

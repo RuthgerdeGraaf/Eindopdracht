@@ -5,7 +5,6 @@ $light: #cae9ae;
 $grey: #3c4748;
 $metal: #AAA9AD;
 $gold: #DBAC34;
-$play_red: red;
 
 .round-image {
     width: 100%;
@@ -25,9 +24,19 @@ $play_red: red;
     max-height: 150px;
     margin:auto;
 }
+.submit-button{
+    width: 250px;
+    height: 40px;
+    background-color: $lightbluegreen;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+
+}
 .return-button {
     background-color: transparent;
-    color: $play_red;
     border: none;
     border-radius: 4px;
     cursor: pointer;

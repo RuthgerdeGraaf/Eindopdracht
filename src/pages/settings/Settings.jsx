@@ -34,14 +34,26 @@ function Settings() {
           <input type="file" id="avatar" onChange={handleAvatarChange} />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+          <label htmlFor="username">Change your username</label>
+          <input 
+            className='small-input-field'
+            placeholder="Username"
+            type="text" 
+            id="username" 
+            value={username} 
+            onChange={handleUsernameChange} />
         </div>
         <div>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" value={username} onChange={handleUsernameChange} />
+          <label htmlFor="password"  >Change your password</label>
+          <input 
+            className='small-input-field'
+            placeholder="Password" 
+            type="password" 
+            id="password" 
+            value={password} 
+            onChange={handlePasswordChange}  />
         </div>
-        <button type="submit">Save</button>
+        <button className='submit-button' type="submit">Save</button>
       </form>
     </div>
   );
