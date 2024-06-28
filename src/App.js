@@ -14,12 +14,19 @@ import Favorite from "./pages/favorite/Favorite.jsx";
 import Collection from "./pages/collection/Collection.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import PlayStationPage from "../src/pages/playstation/PlaystationPage.jsx";
+import QuestionPage from "./pages/questionPage/QuestionPage.jsx";
+import ResultPage from "./pages/resultPage/ResultPage.jsx";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [answers, setAnswers] = useState([]);
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
+  };
+
+  const handleAnswer = (answer) => {
+    setAnswers([...answers, answer]);
   };
 
   const location = useLocation();
@@ -38,6 +45,13 @@ const App = () => {
           <Route path="/collection" element={<Collection />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/playstation" element={<PlayStationPage />} />
+          <Route
+            path="/quiz"
+            element={
+              <QuestionPage handleAnswer={handleAnswer} answers={answers} />
+            }
+          />
+          <Route path="/result" element={<ResultPage answers={answers} />} />
         </Routes>
       </main>
       <Footer />

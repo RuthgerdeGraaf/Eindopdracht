@@ -1,0 +1,25 @@
+.dark-mode-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+
+    &.dark-mode {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .button-icon {
+        margin-left: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
