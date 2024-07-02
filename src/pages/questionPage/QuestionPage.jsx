@@ -27,52 +27,52 @@ const initialQuestions = [
   {
     question: "Ready to play a game? Choose your platform:",
     options: [
-      { src: playstationImage, alt: "Playstation" },
-      { src: xboxImage, alt: "X Box" },
-      { src: nintendoImage, alt: "Nintendo" },
-      { src: computerImage, alt: "Computer" },
-      { src: mobileImage, alt: "Mobile" },
-      { src: everythingImage, alt: "Everything" },
+      { src: playstationImage, alt: "Playstation", filter: { platforms: '18' } },
+      { src: xboxImage, alt: "X Box", filter: { platforms: '1' } },
+      { src: nintendoImage, alt: "Nintendo", filter: { platforms: '7' } },
+      { src: computerImage, alt: "Computer", filter: { platforms: '4' } },
+      { src: mobileImage, alt: "Mobile", filter: { platforms: '21' } },
+      { src: everythingImage, alt: "Everything", filter: { platforms: '' } },
     ],
   },
   {
     question: "How many players will be playing?",
     options: [
-      { src: onePlayerImage, alt: "One Player" },
-      { src: twoPlayerImage, alt: "Two Players" },
+      { src: onePlayerImage, alt: "One Player", filter: { tags: 'singleplayer' } },
+      { src: twoPlayerImage, alt: "Two Players", filter: { tags: 'multiplayer' } },
     ],
   },
   {
     question: "Do you want to play online or offline?",
     options: [
-      { src: onlineImage, alt: "Online" },
-      { src: offlineImage, alt: "Offline" },
+      { src: onlineImage, alt: "Online", filter: { tags: 'online' } },
+      { src: offlineImage, alt: "Offline", filter: { tags: 'offline' } },
     ],
   },
   {
     question: "What type of game do you want to play?",
     options: [
-      { src: mysteryGameImage, alt: "Mystery Game" },
-      { src: hackSlashGameImage, alt: "Hack & Slash Game"},
-      { src: racingGameImage, alt: "Racing Game" },
-      { src: shooterGameImage, alt: "Shooter Game" },
-      { src: adventureGameImage, alt: "Adventure Game" },
-      { src: partyGameImage, alt: "Party Game" },
+      { src: mysteryGameImage, alt: "Mystery Game", filter: { genres: 'mystery' } },
+      { src: hackSlashGameImage, alt: "Hack & Slash Game", filter: { genres: 'hack-and-slash' } },
+      { src: racingGameImage, alt: "Racing Game", filter: { genres: 'racing' } },
+      { src: shooterGameImage, alt: "Shooter Game", filter: { genres: 'shooter' } },
+      { src: adventureGameImage, alt: "Adventure Game", filter: { genres: 'adventure' } },
+      { src: partyGameImage, alt: "Party Game", filter: { genres: 'party' } },
     ],
   },
   {
     question: "Do you want to pay for the game?",
     options: [
-      { src: payImage, alt: "Pay for it" },
-      { src: dontPayImage, alt: "Don't pay for it" },
+      { src: payImage, alt: "Pay for it", filter: { price: 'paid' } },
+      { src: dontPayImage, alt: "Don't pay for it", filter: { price: 'free' } },
     ],
   },
 ];
 
 const specialSecondQuestionOptions = [
-  { src: onePlayerImage, alt: "One Player" },
-  { src: twoPlayerImage, alt: "Two Players" },
-  { src: fourPlayerImage, alt: "Four Players" },
+  { src: onePlayerImage, alt: "One Player", filter: { tags: 'singleplayer' } },
+  { src: twoPlayerImage, alt: "Two Players", filter: { tags: 'multiplayer' } },
+  { src: fourPlayerImage, alt: "Four Players", filter: { tags: 'multiplayer' } },
 ];
 
 function QuestionPage() {
@@ -83,7 +83,7 @@ function QuestionPage() {
   const navigate = useNavigate();
 
   const handleImageClick = (option) => {
-    setAnswers(prevAnswers => [...prevAnswers, option]);
+    setAnswers(prevAnswers => [...prevAnswers, option.filter]);
 
     // Check if Nintendo is selected
     if (currentQuestion === 0 && option.src === nintendoImage) {

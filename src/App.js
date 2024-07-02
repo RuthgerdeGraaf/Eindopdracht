@@ -18,6 +18,8 @@ import PlayStationPage from "../src/pages/playstation/PlaystationPage.jsx";
 import QuestionPage from "./pages/questionPage/QuestionPage.jsx";
 import ResultPage from "./pages/resultPage/ResultPage.jsx";
 import { AnswerProvider, AnswerContext } from "./context/AnswerContext";
+import Test from "./pages/test/Test.jsx";
+import GameDetail from "./pages/gameDetail/GameDetail.jsx";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -38,28 +40,32 @@ const App = () => {
   };
 
   return (
-    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      {showHeader && (
-        <Header
-          darkMode={darkMode}
-          toggleDarkMode={toggleDarkMode}
-          onHomeClick={handleHomeClick}
-        />
-      )}
-      <main className="App-main">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/favorite" element={<Favorite />} />
-          <Route path="/collection" element={<Collection />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/playstation" element={<PlayStationPage />} />
-          <Route path="/quiz" element={<QuestionPage />} />
-          <Route path="/result" element={<ResultPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <>
+      <div className={`App ${darkMode ? "dark-mode" : ""}`}>
+        {showHeader && (
+          <Header
+            darkMode={darkMode}
+            toggleDarkMode={toggleDarkMode}
+            onHomeClick={handleHomeClick}
+          />
+        )}
+        <main className="App-main">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/favorite" element={<Favorite />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/playstation" element={<PlayStationPage />} />
+            <Route path="/quiz" element={<QuestionPage />} />
+            <Route path="/result" element={<ResultPage />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/game/:id" component={GameDetail} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 
