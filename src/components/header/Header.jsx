@@ -4,7 +4,7 @@ import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon
 import './Header.scss';
 import Avatar from '../avatar/Avatar';
 
-const Header = ({ darkMode, toggleDarkMode }) => {
+const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleMouseEnter = () => {
@@ -33,7 +33,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                     Go 2
                     {isOpen && (
                         <ul className="dropdown">
-                            <li><Link to="/home"><HomeIcon />Home</Link></li>
+                            <li><Link to="/home" onClick={onHomeClick}><HomeIcon />Home</Link></li>
                             <li><Link to="/favorite"><FavoriteIcon />Favorite</Link></li>
                             <li><Link to="/collection"><CollectionIcon />Collection</Link></li>
                             <li><Link to="/settings"><SettingsIcon />Settings</Link></li>

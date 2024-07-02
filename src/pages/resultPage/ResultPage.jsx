@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AnswerContext } from '../../context/AnswerContext';
+import './ResultPage.scss';
 
-function ResultPage({ answers }) {
+function ResultPage() {
+  const { answers } = useContext(AnswerContext);
+
   return (
-    <div>
-      <h1>Resultaten</h1>
+    <div className="result-page">
+      <h1>Results</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {answers.map((answer, index) => (
           <img
             key={index}
             src={answer.src}
             alt={answer.alt}
-            className='small-round-image'
+            className="round-image"
           />
         ))}
       </div>

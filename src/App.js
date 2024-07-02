@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import "./App.scss";
 import Header from "../src/components/header/Header";
@@ -16,26 +17,34 @@ import Settings from "./pages/settings/Settings.jsx";
 import PlayStationPage from "../src/pages/playstation/PlaystationPage.jsx";
 import QuestionPage from "./pages/questionPage/QuestionPage.jsx";
 import ResultPage from "./pages/resultPage/ResultPage.jsx";
+import { AnswerProvider, AnswerContext } from "./context/AnswerContext";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [answers, setAnswers] = useState([]);
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
-  const handleAnswer = (answer) => {
-    setAnswers([...answers, answer]);
-  };
-
   const location = useLocation();
   const showHeader = location.pathname !== "/";
+
+  const { resetAnswers } = useContext(AnswerContext);
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    resetAnswers();
+    navigate("/home");
+  };
 
   return (
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
       {showHeader && (
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Header
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+          onHomeClick={handleHomeClick}
+        />
       )}
       <main className="App-main">
         <Routes>
@@ -45,13 +54,8 @@ const App = () => {
           <Route path="/collection" element={<Collection />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/playstation" element={<PlayStationPage />} />
-          <Route
-            path="/quiz"
-            element={
-              <QuestionPage handleAnswer={handleAnswer} answers={answers} />
-            }
-          />
-          <Route path="/result" element={<ResultPage answers={answers} />} />
+          <Route path="/quiz" element={<QuestionPage />} />
+          <Route path="/result" element={<ResultPage />} />
         </Routes>
       </main>
       <Footer />
@@ -61,7 +65,9 @@ const App = () => {
 
 const AppWrapper = () => (
   <Router>
-    <App />
+    <AnswerProvider>
+      <App />
+    </AnswerProvider>
   </Router>
 );
 

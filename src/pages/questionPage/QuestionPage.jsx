@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './QuestionPage.scss';
 import { useNavigate } from 'react-router-dom';
 import computerImage from '../../img/Computer.jpeg';
@@ -21,6 +21,7 @@ import partyGameImage from '../../img/PartyGame.jpeg';
 import payImage from '../../img/PayForIt.jpeg';
 import dontPayImage from '../../img/DontPayForIt.jpeg';
 import { Return } from '../../icons/Icon';
+import { AnswerContext } from '../../context/AnswerContext';
 
 const initialQuestions = [
   {
@@ -74,22 +75,20 @@ const specialSecondQuestionOptions = [
   { src: fourPlayerImage, alt: "Four Players" },
 ];
 
-function QuestionPage({ handleAnswer }) {
+function QuestionPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions, setQuestions] = useState(initialQuestions);
-  const [answers, setAnswers] = useState([]);
+  const { answers, setAnswers, resetAnswers } = useContext(AnswerContext);
   const [message, setMessage] = useState('At any moment you can press this button, to get back to the start!');
   const navigate = useNavigate();
 
   const handleImageClick = (option) => {
-    handleAnswer(option);
     setAnswers(prevAnswers => [...prevAnswers, option]);
 
-    if (currentQuestion === 0) {
+    // Check if Nintendo is selected
+    if (currentQuestion === 0 && option.src === nintendoImage) {
       const updatedQuestions = [...initialQuestions];
-      if (option.src === nintendoImage) {
-        updatedQuestions[1].options = specialSecondQuestionOptions;
-      }
+      updatedQuestions[1] = { ...initialQuestions[1], options: specialSecondQuestionOptions };
       setQuestions(updatedQuestions);
     }
 
@@ -103,7 +102,7 @@ function QuestionPage({ handleAnswer }) {
   const handleButtonClick = () => {
     setCurrentQuestion(0);
     setQuestions(initialQuestions);
-    setAnswers([]);
+    resetAnswers();
     setMessage('You have reset the quiz. Ready to start again?');
     navigate('/home');
   };
