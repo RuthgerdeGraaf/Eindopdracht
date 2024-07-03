@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon } from '../../icons/Icon';
+import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon, Everything } from '../../icons/Icon';
 import './Header.scss';
 import Avatar from '../avatar/Avatar';
 
@@ -36,6 +36,7 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
                             <li><Link to="/home" onClick={onHomeClick}><HomeIcon />Home</Link></li>
                             <li><Link to="/favorite"><FavoriteIcon />Favorite</Link></li>
                             <li><Link to="/collection"><CollectionIcon />Collection</Link></li>
+                            <li><Link to="/everything"><Everything />Everything</Link></li>
                             <li><Link to="/settings"><SettingsIcon />Settings</Link></li>
                         </ul>
                     )}

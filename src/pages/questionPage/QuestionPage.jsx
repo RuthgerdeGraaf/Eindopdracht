@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 import './QuestionPage.scss';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import computerImage from '../../img/Computer.jpeg';
 import playstationImage from '../../img/Playstation.jpeg';
 import xboxImage from '../../img/Xbox.jpeg';
 import nintendoImage from '../../img/Switch.jpeg';
 import mobileImage from '../../img/Mobile.jpeg';
-import everythingImage from '../../img/Everything.jpeg';
+import everythingImage from '../../img/Everything.jpeg';  // Standaard afbeelding voor de link optie
 import onePlayerImage from '../../img/OnePlayer.jpeg';
 import twoPlayerImage from '../../img/TwoPlayers.jpeg';
 import fourPlayerImage from '../../img/FourPlayers.jpeg';
@@ -31,8 +31,8 @@ const initialQuestions = [
       { src: xboxImage, alt: "X Box", filter: { platforms: '1' } },
       { src: nintendoImage, alt: "Nintendo", filter: { platforms: '7' } },
       { src: computerImage, alt: "Computer", filter: { platforms: '4' } },
-      { src: mobileImage, alt: "Mobile", filter: { platforms: '21' } },
-      { src: everythingImage, alt: "Everything", filter: { platforms: '' } },
+      { link: '/mobile', src: mobileImage, alt: "Mobile" },
+      { link: '/everything', src: everythingImage, alt: "Everything" },  // Standaard afbeelding en alt-tekst voor de link optie
     ],
   },
   {
@@ -112,13 +112,23 @@ function QuestionPage() {
       <h1>{questions[currentQuestion].question}</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {questions[currentQuestion].options.map((option, index) => (
-          <img
-            key={index}
-            src={option.src}
-            alt={option.alt}
-            onClick={() => handleImageClick(option)}
-            className="round-image"
-          />
+          option.link ? (
+            <Link key={index} to={option.link}>
+              <img
+                src={option.src}
+                alt={option.alt}
+                className="round-image"
+              />
+            </Link>
+          ) : (
+            <img
+              key={index}
+              src={option.src}
+              alt={option.alt}
+              onClick={() => handleImageClick(option)}
+              className="round-image"
+            />
+          )
         ))}
       </div>
       <div style={{ marginTop: '20px' }}>

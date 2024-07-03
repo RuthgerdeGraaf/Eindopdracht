@@ -18,7 +18,7 @@ import PlayStationPage from "../src/pages/playstation/PlaystationPage.jsx";
 import QuestionPage from "./pages/questionPage/QuestionPage.jsx";
 import ResultPage from "./pages/resultPage/ResultPage.jsx";
 import { AnswerProvider, AnswerContext } from "./context/AnswerContext";
-import Test from "./pages/test/Test.jsx";
+import Everything from "./pages/everything/Everything.jsx";
 import GameDetail from "./pages/gameDetail/GameDetail.jsx";
 
 const App = () => {
@@ -59,7 +59,7 @@ const App = () => {
             <Route path="/playstation" element={<PlayStationPage />} />
             <Route path="/quiz" element={<QuestionPage />} />
             <Route path="/result" element={<ResultPage />} />
-            <Route path="/test" element={<Test />} />
+            <Route path="/everything" element={<Everything />} />
             <Route path="/game/:id" component={GameDetail} />
           </Routes>
         </main>

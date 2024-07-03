@@ -1,15 +1,15 @@
 import React from 'react';
-import './Test.scss';
+import './Everything.scss';
 import GameList from '../../components/gameCard/GameList.jsx';
 
-const Test = () => {
+const Everything = () => {
     return (
         <div>
-            <h1>This is a test page</h1>
-            <p>Welcome to the test page!</p>
+            <h1>Everything</h1>
+            <p> Until you filter it</p>
             <GameList />
         </div>
     );
 };
 
-export default Test;
+export default Everything;
