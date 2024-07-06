@@ -6,7 +6,7 @@ import playstationImage from '../../img/Playstation.jpeg';
 import xboxImage from '../../img/Xbox.jpeg';
 import nintendoImage from '../../img/Switch.jpeg';
 import mobileImage from '../../img/Mobile.jpeg';
-import everythingImage from '../../img/Everything.jpeg';  // Standaard afbeelding voor de link optie
+import everythingImage from '../../img/Everything.jpeg';
 import onePlayerImage from '../../img/OnePlayer.jpeg';
 import twoPlayerImage from '../../img/TwoPlayers.jpeg';
 import fourPlayerImage from '../../img/FourPlayers.jpeg';
@@ -32,7 +32,7 @@ const initialQuestions = [
       { src: nintendoImage, alt: "Nintendo", filter: { platforms: '7' } },
       { src: computerImage, alt: "Computer", filter: { platforms: '4' } },
       { link: '/mobile', src: mobileImage, alt: "Mobile" },
-      { link: '/everything', src: everythingImage, alt: "Everything" },  // Standaard afbeelding en alt-tekst voor de link optie
+      { link: '/everything', src: everythingImage, alt: "Everything" },
     ],
   },
   {
@@ -45,19 +45,19 @@ const initialQuestions = [
   {
     question: "Do you want to play online or offline?",
     options: [
-      { src: onlineImage, alt: "Online", filter: { tags: 'online' } },
+      { src: onlineImage, alt: "Online", filter: { tags: 'online-multiplayer' } },
       { src: offlineImage, alt: "Offline", filter: { tags: 'offline' } },
     ],
   },
   {
     question: "What type of game do you want to play?",
     options: [
-      { src: mysteryGameImage, alt: "Mystery Game", filter: { genres: 'mystery' } },
-      { src: hackSlashGameImage, alt: "Hack & Slash Game", filter: { genres: 'hack-and-slash' } },
+      { src: mysteryGameImage, alt: "Indie Game", filter: { genres: 'indie' } },
+      { src: hackSlashGameImage, alt: "Fighting Game", filter: { genres: 'fighting' } },
       { src: racingGameImage, alt: "Racing Game", filter: { genres: 'racing' } },
-      { src: shooterGameImage, alt: "Shooter Game", filter: { genres: 'shooter' } },
+      { src: shooterGameImage, alt: "Action Game", filter: { genres: 'action' } },
       { src: adventureGameImage, alt: "Adventure Game", filter: { genres: 'adventure' } },
-      { src: partyGameImage, alt: "Party Game", filter: { genres: 'party' } },
+      { src: partyGameImage, alt: "Family Game", filter: { genres: 'family' } },
     ],
   },
   {
@@ -145,7 +145,7 @@ function QuestionPage() {
         </div>
       </div>
       <h3>{message}</h3>
-      <button className='return-button' onClick={handleButtonClick}>
+      <button className='button-return' onClick={handleButtonClick}>
         <Return />
       </button>
     </div>

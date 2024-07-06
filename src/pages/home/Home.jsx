@@ -24,7 +24,7 @@ const Home = () => {
         
       </div>
       <h3>{message}</h3>
-      <button className='return-button' onClick={handleClick}>
+      <button className='button-return' onClick={handleClick}>
         <Return />
       </button>
     </div>

@@ -1,0 +1,32 @@
+@import 'src/styles/vars';
+@import 'src/components/button/Button.scss';
+
+@keyframes example {
+    0% {
+        left: -100%;
+    }
+    25% {
+        left: 0px;
+    }
+
+    50% {
+        left: 0px;
+    }
+
+    75% {
+        left: 0px;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.trololo {
+    width: 300px;
+    margin: 10px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    // animation-timing-function: linear;
+}
