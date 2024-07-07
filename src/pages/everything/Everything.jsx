@@ -6,7 +6,6 @@ const Everything = () => {
     return (
         <div>
             <h1>Everything</h1>
-            <p> Until you filter it</p>
             <GameList />
         </div>
     );

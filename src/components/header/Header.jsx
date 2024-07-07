@@ -26,7 +26,7 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
             </button>
             <nav>
                 <div 
-                    className="dropdown-button" 
+                    className="dropdown-menu" 
                     onMouseEnter={handleMouseEnter} 
                     onMouseLeave={handleMouseLeave}
                 >

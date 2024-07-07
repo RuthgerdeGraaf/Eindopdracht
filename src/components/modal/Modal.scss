@@ -12,10 +12,13 @@
 }
 
 .modal {
-    background-color: white;
+    background-color: $darkbluegreen;
+    font-size: 1em;
+    font-weight: 500;
     padding: 20px;
+    color: $lightbluegreen;
     border-radius: 8px;
-    max-width: 80%;
+    max-width: 40vh;
     max-height: 80%;
     overflow: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -39,15 +42,16 @@
 
 .modal-content {
     display: flex;
+    flex-direction: column;
 }
 
 .modal-left {
-    flex: 1;
+    flex-grow: 0;
     margin-right: 20px;
 }
 
 .modal-right {
-    flex: 2;
+    flex-grow: 1;
 }
 
 .modal img {
