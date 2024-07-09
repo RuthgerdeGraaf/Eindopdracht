@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon, Everything } from '../../icons/Icon';
 import './Header.scss';
 import Avatar from '../avatar/Avatar';
+import { useUser } from '../../context/UserContext';
 
 const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { username } = useUser();
 
     const handleMouseEnter = () => {
         setIsOpen(true);
@@ -19,7 +21,7 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
         <header className='header'>
             <div>
                 <Avatar className='avatar-small'/>
-                <h1>#WelcomeUser#</h1>
+                <h1>Welcome {username}</h1>
             </div>
             <button className="dark-mode-button" onClick={toggleDarkMode}>
                 {darkMode ? <SunIcon /> : <MoonIcon />}

@@ -1,12 +1,11 @@
-/* GameCard.scss */
 .card {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
     margin: 8px;
     width: 200px;
-    /* Pas de breedte aan zoals gewenst */
     text-align: center;
+    position: relative;
 }
 
 .card-title {

@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
 import Avatar from '../../components/avatar/Avatar';
+import { useUser } from '../../context/UserContext';
 
 function Settings() {
-  const [avatar, setAvatar] = useState(null);
+  const { username, setUsername } = useUser();
+  const [setAvatar] = useState(null);
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
 
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
     setAvatar(file);
   };
 
-    const handleUsernameChange = (event) => {
-    const newUsername = event.target.value;
-    setUsername(newUsername);
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
-    const newPassword = event.target.value;
-    setPassword(newPassword);
+    setPassword(event.target.value);
   };
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Hier kun je extra logica toevoegen voor het opslaan van gegevens
   };
 
   return (
@@ -45,7 +44,7 @@ function Settings() {
             onChange={handleUsernameChange} />
         </div>
         <div>
-          <label htmlFor="password"  >Change your password</label>
+          <label htmlFor="password">Change your password</label>
           <input 
             className='small-input-field'
             placeholder="Password" 

@@ -20,6 +20,9 @@ import { AnswerProvider, AnswerContext } from "./context/AnswerContext";
 import Everything from "./pages/everything/Everything.jsx";
 import GameDetail from "./pages/gameDetail/GameDetail.jsx";
 import MobilePage from "./pages/mobilePage/MobilePage.jsx";
+import { UserProvider } from "./context/UserContext"; // Voeg deze import toe
+import { FavoriteProvider } from "./context/FavoriteContext"; // Voeg deze import toe
+import { CollectionProvider } from "./context/CollectionContext"; // Voeg deze import toe
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -72,7 +75,13 @@ const App = () => {
 const AppWrapper = () => (
   <Router>
     <AnswerProvider>
-      <App />
+      <FavoriteProvider>
+        <CollectionProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </CollectionProvider>
+      </FavoriteProvider>
     </AnswerProvider>
   </Router>
 );
