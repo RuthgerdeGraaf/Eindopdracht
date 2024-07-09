@@ -22,7 +22,6 @@ function Settings() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Hier kun je extra logica toevoegen voor het opslaan van gegevens
   };
 
   return (

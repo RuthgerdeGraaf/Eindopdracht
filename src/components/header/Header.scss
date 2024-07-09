@@ -20,7 +20,7 @@
         align-items: center;
 
         svg {
-            margin-right: 8px; // Voeg een marge toe tussen het icoon en de tekst
+            margin-right: 8px;
         }
     }
 
@@ -44,7 +44,7 @@ nav {
 .dropdown-menu {
     display: inline-block;
     padding: 10px 46px;
-    margin-right: 80px; // Voeg hier een linker marge toe om de dropdown meer naar links te verplaatsen
+    margin-right: 80px;
     cursor: pointer;
     background-color: $lightbluegreen;
     border-radius: 4px;

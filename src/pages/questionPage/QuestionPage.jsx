@@ -85,7 +85,6 @@ function QuestionPage() {
   const handleImageClick = (option) => {
     setAnswers(prevAnswers => [...prevAnswers, option.filter]);
 
-    // Check if Nintendo is selected
     if (currentQuestion === 0 && option.src === nintendoImage) {
       const updatedQuestions = [...initialQuestions];
       updatedQuestions[1] = { ...initialQuestions[1], options: specialSecondQuestionOptions };

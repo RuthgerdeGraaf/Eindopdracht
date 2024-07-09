@@ -28,7 +28,6 @@ function ResultPage() {
                 if (answer.price) filters.price = answer.price;
             });
 
-            // Convert arrays to comma-separated strings
             if (filters.platforms.length) filters.platforms = filters.platforms.join(',');
             if (filters.tags.length) filters.tags = filters.tags.join(',');
             if (filters.genres.length) filters.genres = filters.genres.join(',');

@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext.jsx';
 import './Login.scss';
 import w2p from '../../img/What2Play.jpeg';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = React.useState(''); 
+    const [password, setPassword] = React.useState('');
+    const navigate = useNavigate();
+    const { login } = useAuth();
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
     };
 
     const handlePasswordChange = (e) => {
@@ -16,9 +20,16 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const userData = {
+            username,
+            role: username === 'Ruthger' ? 'admin' : 'user',
+        };
+        login(userData);
+        navigate('/home');
     };
 
-    const isFormValid = email !== '' && password !== '';
+    const isFormValid = username !== '' && password !== '';
 
     return (
         <div className="login-page">
@@ -28,10 +39,11 @@ const Login = () => {
                     <div>
                         <input
                             className="small-input-field"
-                            type="email"
-                            value={email}
-                            onChange={handleEmailChange}
-                            placeholder='Email'
+                            type="text"
+                            value={username}
+                            onChange={handleUsernameChange}
+                            placeholder='Username'
+                            required
                         />
                     </div>
                     <div>
@@ -41,12 +53,14 @@ const Login = () => {
                             value={password}
                             onChange={handlePasswordChange}
                             placeholder='Password'
+                            required
                         />
                     </div>
                     {isFormValid && (
-                <button className="login-button" type="submit">Press to enter</button>
-             )}
+                        <button className="login-button" type="submit">Login</button>
+                    )}
                 </form>
+                <blockquote className='blockquote'>Don't have an account? <Link to="/create-account">Create one here</Link></blockquote>
             </div>
         </div>
     );

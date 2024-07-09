@@ -1,8 +1,6 @@
-// GameDetail.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchGameById } from '../../api/rawgApi'; // Zorg ervoor dat het juiste pad naar je API-bestand wordt gebruikt
+import { fetchGameById } from '../../api/rawgApi'; 
 
 const GameDetail = () => {
     const { id } = useParams();

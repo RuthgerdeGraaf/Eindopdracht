@@ -20,9 +20,12 @@ import { AnswerProvider, AnswerContext } from "./context/AnswerContext";
 import Everything from "./pages/everything/Everything.jsx";
 import GameDetail from "./pages/gameDetail/GameDetail.jsx";
 import MobilePage from "./pages/mobilePage/MobilePage.jsx";
-import { UserProvider } from "./context/UserContext"; // Voeg deze import toe
-import { FavoriteProvider } from "./context/FavoriteContext"; // Voeg deze import toe
-import { CollectionProvider } from "./context/CollectionContext"; // Voeg deze import toe
+import { UserProvider } from "./context/UserContext";
+import { FavoriteProvider } from "./context/FavoriteContext";
+import { CollectionProvider } from "./context/CollectionContext";
+import { AuthProvider } from "./context/AuthContext";
+import CreateAccount from "./components/createAccount/CreateAccount.jsx";
+import Users from "./pages/users/UserPage.jsx";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -55,6 +58,7 @@ const App = () => {
         <main className="App-main">
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/home" element={<Home />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/collection" element={<Collection />} />
@@ -64,6 +68,7 @@ const App = () => {
             <Route path="/everything" element={<Everything />} />
             <Route path="/game/:id" component={GameDetail} />
             <Route path="/mobile" element={<MobilePage />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </main>
         <Footer />
@@ -78,7 +83,9 @@ const AppWrapper = () => (
       <FavoriteProvider>
         <CollectionProvider>
           <UserProvider>
-            <App />
+            <AuthProvider>
+              <App />
+            </AuthProvider>
           </UserProvider>
         </CollectionProvider>
       </FavoriteProvider>

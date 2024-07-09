@@ -4,7 +4,6 @@ const Avatar = () => {
     const [avatarUrl, setAvatarUrl] = useState('');
 
     useEffect(() => {
-        // Fetch the latest uploaded avatar URL from the server
         const fetchAvatar = async () => {
             try {
                 const response = await fetch('/api/avatar/latest');
