@@ -8,6 +8,7 @@ const CreateAccount = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [avatarFile, setAvatarFile] = useState(null);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleEmailChange = (e) => setEmail(e.target.value);
@@ -22,21 +23,19 @@ const CreateAccount = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
         try {
-            let avatarUrl = '';
+            const userData = { email, password, username, avatar: '' };
+            const userResult = await createUser(userData);
+
             if (avatarFile) {
-                const uploadResponse = await uploadAvatar(avatarFile);
-                avatarUrl = uploadResponse.url;
+                await uploadAvatar(username, avatarFile);
             }
 
-            const userData = { email, password, username, avatar: avatarUrl };
-            const result = await createUser(userData);
-            console.log('User created:', result);
-
-            localStorage.setItem('userData', JSON.stringify(userData));
-
+            console.log('User created:', userResult);
             navigate('/dashboard');
         } catch (error) {
+            setError(error.message);
             console.error('Error creating user:', error);
         }
     };
@@ -86,6 +85,7 @@ const CreateAccount = () => {
                     )}
                 </div>
                 <button type="submit">Create Account</button>
+                {error && <p className="error">{error}</p>}
             </form>
         </div>
     );
