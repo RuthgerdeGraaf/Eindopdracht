@@ -32,6 +32,9 @@ const CreateAccount = () => {
             const userData = { email, password, username, avatar: avatarUrl };
             const result = await createUser(userData);
             console.log('User created:', result);
+
+            localStorage.setItem('userData', JSON.stringify(userData));
+
             navigate('/dashboard');
         } catch (error) {
             console.error('Error creating user:', error);

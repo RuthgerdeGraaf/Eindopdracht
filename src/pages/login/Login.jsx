@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext.jsx';
 import './Login.scss';
 import w2p from '../../img/What2Play.jpeg';
 
 const Login = () => {
-    const [username, setUsername] = React.useState(''); 
-    const [password, setPassword] = React.useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const { login } = useAuth();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -18,18 +16,36 @@ const Login = () => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const userData = {
-            username,
-            role: username === 'Ruthger' ? 'admin' : 'user',
-        };
-        login(userData);
-        navigate('/home');
+        try {
+            const response = await fetch('https://novi.datavortex.nl/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': 'whattoplay:ooBH8YLepfnOLSLnHj41',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+
+            const data = await response.json();
+            const token = data.token;
+
+            // Opslaan van de token in localStorage
+            localStorage.setItem('token', token);
+
+            navigate('/home');
+        } catch (error) {
+            console.error('Login error:', error);
+        }
     };
 
-    const isFormValid = username !== '' && password !== '';
+    const isFormValid = username.trim() !== '' && password.trim() !== '';
 
     return (
         <div className="login-page">
@@ -57,7 +73,7 @@ const Login = () => {
                         />
                     </div>
                     {isFormValid && (
-                        <button className="login-button" type="submit">Login</button>
+                        <button className="login-button" type="submit"> <Link to="/home"></Link>Login</button>
                     )}
                 </form>
                 <blockquote className='blockquote'>Don't have an account? <Link to="/create-account">Create one here</Link></blockquote>

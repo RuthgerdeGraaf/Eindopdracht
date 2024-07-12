@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -45,36 +45,55 @@ const App = () => {
     navigate("/home");
   };
 
-  return (
-    <>
-      <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-        {showHeader && (
-          <Header
-            darkMode={darkMode}
-            toggleDarkMode={toggleDarkMode}
-            onHomeClick={handleHomeClick}
-          />
-        )}
-        <main className="App-main">
-          <Routes>
-            <Route path="/" element={<Login />} />
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthenticated(true);
+    } else {
+      setAuthenticated(false);
+    }
+  }, []);
+
+
+return (
+  <>
+    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
+      {showHeader && authenticated && (
+        <Header
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+          onHomeClick={handleHomeClick}
+        />
+      )}
+      <main className="App-main">
+        <Routes>
+          {!authenticated && <Route path="/" element={<Login />} />}
+          {!authenticated && (
             <Route path="/create-account" element={<CreateAccount />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/favorite" element={<Favorite />} />
+          )}
+          {authenticated && <Route path="/home" element={<Home />} />}
+          {authenticated && <Route path="/favorite" element={<Favorite />} />}
+          {authenticated && (
             <Route path="/collection" element={<Collection />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/quiz" element={<QuestionPage />} />
-            <Route path="/result" element={<ResultPage />} />
+          )}
+          {authenticated && <Route path="/settings" element={<Settings />} />}
+          {authenticated && <Route path="/quiz" element={<QuestionPage />} />}
+          {authenticated && <Route path="/result" element={<ResultPage />} />}
+          {authenticated && (
             <Route path="/everything" element={<Everything />} />
-            <Route path="/game/:id" component={GameDetail} />
-            <Route path="/mobile" element={<MobilePage />} />
-            <Route path="/users" element={<Users />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </>
-  );
+          )}
+          {authenticated && <Route path="/game/:id" component={GameDetail} />}
+          {authenticated && <Route path="/mobile" element={<MobilePage />} />}
+          {authenticated && <Route path="/users" element={<Users />} />}
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  </>
+);
+
 };
 
 const AppWrapper = () => (
