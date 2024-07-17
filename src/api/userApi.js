@@ -26,33 +26,6 @@ export async function createUser(data) {
   }
 }
 
-export async function uploadAvatar(username, file) {
-  const formData = new FormData();
-  formData.append("file", file);
-
-  try {
-    const response = await fetch(`${BASE_URL}/users/${username}/upload`, {
-      method: "POST",
-      headers: {
-        "X-Api-Key": API_KEY,
-      },
-      body: formData,
-    });
-
-    if (!response.ok) {
-      const result = await response.json();
-      console.error("Error:", response.status, response.statusText, result);
-      throw new Error(`Network response was not ok: ${response.statusText}`);
-    }
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error("uploadAvatar error:", error);
-    throw error;
-  }
-}
-
 export async function getUser(username) {
   try {
     const response = await fetch(`${BASE_URL}/users/${username}`, {
@@ -68,10 +41,64 @@ export async function getUser(username) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
 
-    const result = await response.json();
+    const resultText = await response.text();
+    if (!resultText) {
+      throw new Error("Empty response");
+    }
+
+    const result = JSON.parse(resultText);
     return result;
   } catch (error) {
     console.error("getUser error:", error);
+    throw error;
+  }
+}
+
+export async function uploadFile(file) {
+  const url = "https://novi.datavortex.nl/upload";
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: "Bearer YOUR_AUTH_TOKEN", // Replace YOUR_AUTH_TOKEN with your actual token
+        "Content-Type": "multipart/form-data", // This might not be necessary as browsers usually set it correctly with FormData
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server responded with ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("File uploaded successfully:", result);
+  } catch (error) {
+    console.error("Upload failed:", error);
+  }
+}
+
+export async function getAvatar(username) {
+  try {
+    const response = await fetch(`${BASE_URL}/users/${username}/avatar`, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": API_KEY,
+      },
+    });
+
+    if (!response.ok) {
+      const result = await response.json();
+      console.error("Error:", response.status, response.statusText, result);
+      throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    return result.url; // Assuming the response contains a URL to the avatar
+  } catch (error) {
+    console.error("getAvatar error:", error);
     throw error;
   }
 }
