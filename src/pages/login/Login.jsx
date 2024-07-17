@@ -6,6 +6,7 @@ import w2p from '../../img/What2Play.jpeg';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleUsernameChange = (e) => {
@@ -20,7 +21,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://novi.datavortex.nl/api/login', {
+            const response = await fetch('https://api.datavortex.nl/whattoplay/users/authenticate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,19 +30,25 @@ const Login = () => {
                 body: JSON.stringify({ username, password }),
             });
 
+            const text = await response.text();
+            console.log('Response text:', text);
+
             if (!response.ok) {
-                throw new Error('Login failed');
+                if (response.status === 403) {
+                    throw new Error('Access is forbidden. Please check your API key and user permissions.');
+                }
+                throw new Error('Login failed: ' + response.status);
             }
 
-            const data = await response.json();
+            const data = JSON.parse(text);
             const token = data.token;
 
-            // Opslaan van de token in localStorage
             localStorage.setItem('token', token);
 
             navigate('/home');
         } catch (error) {
             console.error('Login error:', error);
+            alert(error.message);
         }
     };
 
@@ -72,11 +79,14 @@ const Login = () => {
                             required
                         />
                     </div>
-                    {isFormValid && (
-                        <button className="login-button" type="submit"> <Link to="/home"></Link>Login</button>
-                    )}
+                    <button className="login-button" type="submit" disabled={!isFormValid}>
+                        Login
+                    </button>
                 </form>
-                <blockquote className='blockquote'>Don't have an account? <Link to="/create-account">Create one here</Link></blockquote>
+                {error && <p className="error">{error}</p>}
+                <blockquote className='blockquote'>
+                    Don't have an account? <Link to="/create-account">Create one here</Link>
+                </blockquote>
             </div>
         </div>
     );

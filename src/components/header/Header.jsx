@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon, Everything } from '../../icons/Icon';
 import './Header.scss';
 import Avatar from '../avatar/Avatar';
@@ -8,6 +8,7 @@ import { useUser } from '../../context/UserContext';
 const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { username } = useUser();
+    const navigate = useNavigate();
 
     const handleMouseEnter = () => {
         setIsOpen(true);
@@ -15,6 +16,11 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
 
     const handleMouseLeave = () => {
         setIsOpen(false);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
     };
 
     return (
@@ -40,6 +46,7 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
                             <li><Link to="/collection"><CollectionIcon />Collection</Link></li>
                             <li><Link to="/everything"><Everything />Everything</Link></li>
                             <li><Link to="/settings"><SettingsIcon />Settings</Link></li>
+                            <li><button onClick={handleLogout}>Logout</button></li>
                         </ul>
                     )}
                 </div>

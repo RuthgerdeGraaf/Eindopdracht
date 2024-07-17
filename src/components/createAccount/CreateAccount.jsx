@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser, uploadAvatar } from '../../api/userApi';
 import { useDropzone } from 'react-dropzone';
+import './CreateAccount.scss';
 
 const CreateAccount = () => {
     const [email, setEmail] = useState('');
@@ -33,7 +34,7 @@ const CreateAccount = () => {
             }
 
             console.log('User created:', userResult);
-            navigate('/dashboard');
+            navigate('/login');
         } catch (error) {
             setError(error.message);
             console.error('Error creating user:', error);
@@ -85,7 +86,14 @@ const CreateAccount = () => {
                     )}
                 </div>
                 <button type="submit">Create Account</button>
-                {error && <p className="error">{error}</p>}
+                {error && <p className="error">Your password must contain:
+                    <ul className='list'>
+                        <li>At least 1 capital letter</li>
+                        <li>A number</li>
+                        <li>At least 8 characters</li>
+                        <li>At least 1 special character</li>
+                    </ul>
+                </p>}
             </form>
         </div>
     );

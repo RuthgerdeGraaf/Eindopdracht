@@ -1,4 +1,4 @@
-const BASE_URL = "https://novi.datavortex.nl/api";
+const BASE_URL = "https://api.datavortex.nl/whattoplay";
 const API_KEY = "whattoplay:ooBH8YLepfnOLSLnHj41";
 
 export async function createUser(data) {
