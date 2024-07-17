@@ -54,29 +54,30 @@ export async function getUser(username) {
   }
 }
 
-export async function uploadFile(file) {
-  const url = "https://novi.datavortex.nl/upload";
+export async function uploadAvatar(username, file) {
   const formData = new FormData();
   formData.append("file", file);
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`${BASE_URL}/users/${username}/upload`, {
       method: "POST",
-      body: formData,
       headers: {
-        Authorization: "Bearer YOUR_AUTH_TOKEN", // Replace YOUR_AUTH_TOKEN with your actual token
-        "Content-Type": "multipart/form-data", // This might not be necessary as browsers usually set it correctly with FormData
+        "X-Api-Key": API_KEY,
       },
+      body: formData,
     });
 
     if (!response.ok) {
-      throw new Error(`Server responded with ${response.status}`);
+      const result = await response.json();
+      console.error("Error:", response.status, response.statusText, result);
+      throw new Error(`Network response was not ok: ${response.statusText}`);
     }
 
     const result = await response.json();
-    console.log("File uploaded successfully:", result);
+    return result;
   } catch (error) {
-    console.error("Upload failed:", error);
+    console.error("uploadAvatar error:", error);
+    throw error;
   }
 }
 
