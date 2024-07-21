@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon, Everything } from '../../icons/Icon';
+import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon, Everything } from '../../assets/icons/Icon';
 import './Header.scss';
 import Avatar from '../avatar/Avatar';
 import { useUser } from '../../context/UserContext';
