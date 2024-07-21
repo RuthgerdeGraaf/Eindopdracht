@@ -1,1 +1,8 @@
 @import 'src/styles/vars';
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}

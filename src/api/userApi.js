@@ -81,6 +81,7 @@ export async function uploadAvatar(username, file) {
   }
 }
 
+
 export async function getAvatar(username) {
   try {
     const response = await fetch(`${BASE_URL}/users/${username}/avatar`, {
@@ -147,6 +148,7 @@ export async function authenticateUser(credentials) {
     }
 
     const result = await response.json();
+    localStorage.setItem("token", result.token);
     return result;
   } catch (error) {
     console.error("authenticateUser error:", error);

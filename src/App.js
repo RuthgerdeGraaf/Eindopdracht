@@ -5,6 +5,7 @@ import {
   Routes,
   useLocation,
   Navigate,
+  useNavigate,
 } from "react-router-dom";
 import "./App.scss";
 import Header from "../src/components/header/Header";
@@ -31,6 +32,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
@@ -42,10 +44,11 @@ const App = () => {
 
   const handleHomeClick = () => {
     resetAnswers();
-    Navigate("/home");
+    navigate("/home");
   };
 
   useEffect(() => {
+    // Check if token exists in localStorage
     const token = localStorage.getItem("token");
     setAuthenticated(!!token);
   }, []);

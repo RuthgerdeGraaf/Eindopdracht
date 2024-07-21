@@ -109,7 +109,7 @@ function QuestionPage() {
   return (
     <div>
       <h1>{questions[currentQuestion].question}</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div classname="questions">
         {questions[currentQuestion].options.map((option, index) => (
           option.link ? (
             <Link key={index} to={option.link}>

@@ -6,6 +6,7 @@ import { getUser, updateUser, uploadAvatar } from '../../api/userApi';
 function Settings() {
     const { username, setUsername } = useUser();
     const [avatar, setAvatar] = useState(null);
+    const [avatarUrl, setAvatarUrl] = useState('');
     const [password, setPassword] = useState('');
 
     useEffect(() => {
@@ -13,7 +14,7 @@ function Settings() {
             if (username) {
                 try {
                     const userData = await getUser(username);
-                    setAvatar(userData.avatarUrl);
+                    setAvatarUrl(userData.avatarUrl);
                 } catch (error) {
                     console.error('Error fetching user data:', error);
                 }
@@ -38,7 +39,13 @@ function Settings() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (avatar) {
-            await uploadAvatar(username, avatar);
+            try {
+                await uploadAvatar(username, avatar);
+                const userData = await getUser(username);
+                setAvatarUrl(userData.avatarUrl);
+            } catch (error) {
+                console.error('Error uploading avatar:', error);
+            }
         }
         const userData = { username, password };
         await updateUser(username, userData);
@@ -49,7 +56,7 @@ function Settings() {
             <h1>Settings</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <Avatar className='avatar' />
+                    <Avatar className='avatar' src={avatarUrl} />
                     <input type="file" id="avatar" onChange={handleAvatarChange} />
                 </div>
                 <div>
