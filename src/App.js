@@ -4,6 +4,7 @@ import {
   Route,
   Routes,
   useLocation,
+  Navigate,
   useNavigate,
 } from "react-router-dom";
 import "./App.scss";
@@ -29,36 +30,43 @@ import Users from "./pages/users/UserPage.jsx";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
-  const location = useLocation();
   const showHeader = location.pathname !== "/";
 
   const { resetAnswers } = useContext(AnswerContext);
-  const navigate = useNavigate();
 
   const handleHomeClick = () => {
     resetAnswers();
     navigate("/home");
   };
 
-  const [authenticated, setAuthenticated] = useState(false);
-
   useEffect(() => {
+    // Check if token exists in localStorage
     const token = localStorage.getItem("token");
-    if (token) {
-      setAuthenticated(true);
-    } else {
-      setAuthenticated(false);
-    }
+    setAuthenticated(!!token);
   }, []);
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const token = localStorage.getItem("token");
+      setAuthenticated(!!token);
+    };
 
-return (
-  <>
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  return (
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
       {showHeader && authenticated && (
         <Header
@@ -69,10 +77,12 @@ return (
       )}
       <main className="App-main">
         <Routes>
-          {!authenticated && <Route path="/" element={<Login />} />}
-          {!authenticated && (
-            <Route path="/create-account" element={<CreateAccount />} />
-          )}
+          <Route
+            path="/"
+            element={authenticated ? <Navigate to="/home" /> : <Login />}
+          />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/login" element={<Login />} />
           {authenticated && <Route path="/home" element={<Home />} />}
           {authenticated && <Route path="/favorite" element={<Favorite />} />}
           {authenticated && (
@@ -84,16 +94,17 @@ return (
           {authenticated && (
             <Route path="/everything" element={<Everything />} />
           )}
-          {authenticated && <Route path="/game/:id" component={GameDetail} />}
+          {authenticated && <Route path="/game/:id" element={<GameDetail />} />}
           {authenticated && <Route path="/mobile" element={<MobilePage />} />}
           {authenticated && <Route path="/users" element={<Users />} />}
+          {!authenticated && (
+            <Route path="*" element={<Navigate to="/login" />} />
+          )}
         </Routes>
       </main>
       <Footer />
     </div>
-  </>
-);
-
+  );
 };
 
 const AppWrapper = () => (

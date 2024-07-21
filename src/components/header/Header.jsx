@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { HomeIcon, FavoriteIcon, CollectionIcon, SettingsIcon, SunIcon, MoonIcon, Everything } from '../../icons/Icon';
 import './Header.scss';
 import Avatar from '../avatar/Avatar';
 import { useUser } from '../../context/UserContext';
+import { getUser } from '../../api/userApi';
 
 const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { username } = useUser();
+    const [avatarUrl, setAvatarUrl] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (username) {
+                const userData = await getUser(username);
+                setAvatarUrl(userData.avatarUrl);
+            }
+        };
+        fetchUserData();
+    }, [username]);
 
     const handleMouseEnter = () => {
         setIsOpen(true);
@@ -17,10 +30,15 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
         setIsOpen(false);
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    };
+
     return (
         <header className='header'>
             <div>
-                <Avatar className='avatar-small'/>
+                <Avatar className='avatar-small' src={avatarUrl} />
                 <h1>Welcome {username}</h1>
             </div>
             <button className="dark-mode-button" onClick={toggleDarkMode}>
@@ -40,6 +58,7 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
                             <li><Link to="/collection"><CollectionIcon />Collection</Link></li>
                             <li><Link to="/everything"><Everything />Everything</Link></li>
                             <li><Link to="/settings"><SettingsIcon />Settings</Link></li>
+                            <li><button onClick={handleLogout}>Logout</button></li>
                         </ul>
                     )}
                 </div>

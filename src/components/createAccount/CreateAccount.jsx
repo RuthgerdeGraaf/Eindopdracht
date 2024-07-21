@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUser, uploadAvatar } from '../../api/userApi';
+import { createUser, uploadAvatar, authenticateUser } from '../../api/userApi';
 import { useDropzone } from 'react-dropzone';
+import './CreateAccount.scss';
 
 const CreateAccount = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [avatarFile, setAvatarFile] = useState(null);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleEmailChange = (e) => setEmail(e.target.value);
@@ -22,21 +24,30 @@ const CreateAccount = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
         try {
-            let avatarUrl = '';
+            // Create user
+            const userData = { email, password, username };
+            await createUser(userData);
+
+            // Upload avatar if exists
             if (avatarFile) {
-                const uploadResponse = await uploadAvatar(avatarFile);
-                avatarUrl = uploadResponse.url;
+                await uploadAvatar(username, avatarFile);
             }
 
-            const userData = { email, password, username, avatar: avatarUrl };
-            const result = await createUser(userData);
-            console.log('User created:', result);
+            // Authenticate user
+            const authData = await authenticateUser({ username, password });
+            const token = authData.token;
 
-            localStorage.setItem('userData', JSON.stringify(userData));
+            if (!token) {
+                throw new Error('Login failed: No token received.');
+            }
 
-            navigate('/dashboard');
+            // Store the token and navigate
+            localStorage.setItem('token', token);
+            navigate('/home');
         } catch (error) {
+            setError(error.message);
             console.error('Error creating user:', error);
         }
     };
@@ -86,6 +97,7 @@ const CreateAccount = () => {
                     )}
                 </div>
                 <button type="submit">Create Account</button>
+                {error && <p className="error">{error}</p>}
             </form>
         </div>
     );
