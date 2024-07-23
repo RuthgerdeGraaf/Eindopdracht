@@ -1,0 +1,55 @@
+/* .form-item-wrapper */
+
+.form-item-wrapper {
+    width: 90%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .form-item-container */
+
+.form-item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-item-container label {
+    width: 30%;
+    font-size: 1.5rem;
+    text-align: right;
+}
+
+.form-item-container input,
+.form-item-container textarea,
+.error-message {
+    width: 60%;
+}
+
+.form-item-container input {
+    height: 1.5rem;
+}
+
+.form-item-container textarea {
+    height: 100px;
+}
+
+/* Login/registration form buttons */
+
+.login-registration-form button {
+    margin-top: 20px;
+}
+
+/* Error messages */
+
+.error-message {
+    align-self: end;
+    font-size: 1rem;
+    color: var(--red);
+    text-align: center;
+
+    @media screen and (max-width: 600px) {
+        font-size: .8rem;
+    }
+}
