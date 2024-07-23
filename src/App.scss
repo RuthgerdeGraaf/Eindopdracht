@@ -10,13 +10,20 @@
   background-color: $light;
 }
 
-.App-main {
+.Header {
+  flex: 0 0 auto;
+}
+
+.page-wrapper {
   flex: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px; // Hoogte van de header
+  padding-bottom: 48px; // Hoogte van de footer
 }
 
 .App-footer {
-  position: relative;
   height: 48px;
   display: flex;
   justify-content: flex-end;
@@ -43,6 +50,7 @@
   padding-right: 16px;
   padding-top: 8px;
 }
+
 /* Dark mode stijlen */
 .dark-mode {
   background-color: $dark;

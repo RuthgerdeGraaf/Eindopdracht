@@ -1,118 +1,106 @@
-import React, { useState, useEffect, useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-  Navigate,
-  useNavigate,
-} from "react-router-dom";
-import "./App.scss";
-import Header from "./components/header/Header.jsx";
-import Footer from "./components/footer/Footer.jsx";
-import Login from "./pages/login/Login.jsx";
-import Home from "./pages/home/Home.jsx";
-import Favorite from "./pages/favorite/Favorite.jsx";
-import Collection from "./pages/collection/Collection.jsx";
-import Settings from "./pages/settings/Settings.jsx";
-import QuestionPage from "./pages/questionPage/QuestionPage.jsx";
-import ResultPage from "./pages/resultPage/ResultPage.jsx";
-import { AnswerProvider, AnswerContext } from "./context/AnswerContext.jsx";
-import Everything from "./pages/everything/Everything.jsx";
-import GameDetail from "./pages/gameDetail/GameDetail.jsx";
-import MobilePage from "./pages/mobilePage/MobilePage.jsx";
-import { FavoriteProvider } from "./context/FavoriteContext.jsx";
-import { CollectionProvider } from "./context/CollectionContext.jsx";
-import { AuthContext } from "./context/AuthContext.jsx";
+import { useContext, useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-const App = () => {
+// Context
+import { AuthContext } from './context/AuthContext';
+
+// Pages
+import Home from './pages/home/Home';
+import LoginAndRegistration from './pages/loginAndRegistration/LoginAndRegistration';
+import Profile from './pages/profile/Profile';
+import PageNotFound from './pages/page-not-found/PageNotFound';
+import Favorite from './pages/favorite/Favorite';
+import Collection from './pages/collection/Collection';
+import QuestionPage from './pages/questionPage/QuestionPage';
+import ResultPage from './pages/resultPage/ResultPage';
+import Everything from './pages/everything/Everything';
+import GameDetail from './pages/gameDetail/GameDetail';
+import MobilePage from './pages/mobilePage/MobilePage';
+
+// Components
+import Header from './components/header/Header';
+import PageFooter from './components/footer/Footer';
+
+// Style
+import './App.scss';
+
+function App() {
+  const { isLoggedIn } = useContext(AuthContext);
   const [darkMode, setDarkMode] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
-  const showHeader = location.pathname !== "/";
-
-  const { resetAnswers } = useContext(AnswerContext);
-
-  const handleHomeClick = () => {
-    resetAnswers();
-    navigate("/home");
-  };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setAuthenticated(!!token);
-  }, []);
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const token = localStorage.getItem("token");
-      setAuthenticated(!!token);
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
-
   return (
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      {showHeader && authenticated && (
-        <Header
-          darkMode={darkMode}
-          toggleDarkMode={toggleDarkMode}
-          onHomeClick={handleHomeClick}
-        />
-      )}
-      <main className="App-main">
-        <Routes>
-          <Route
-            path="/"
-            element={authenticated ? <Navigate to="/home" /> : <Login />}
-          />
-          <Route path="/login" element={<Login />} />
-          {authenticated && <Route path="/home" element={<Home />} />}
-          {authenticated && <Route path="/favorite" element={<Favorite />} />}
-          {authenticated && (
-            <Route path="/collection" element={<Collection />} />
-          )}
-          {authenticated && <Route path="/settings" element={<Settings />} />}
-          {authenticated && <Route path="/quiz" element={<QuestionPage />} />}
-          {authenticated && <Route path="/result" element={<ResultPage />} />}
-          {authenticated && (
-            <Route path="/everything" element={<Everything />} />
-          )}
-          {authenticated && <Route path="/game/:id" element={<GameDetail />} />}
-          {authenticated && <Route path="/mobile" element={<MobilePage />} />}
-          {!authenticated && (
-            <Route path="*" element={<Navigate to="/login" />} />
-          )}
-        </Routes>
-      </main>
-      <Footer />
+      <Header className="Header" darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <div className="page-wrapper">
+        <div className="page-content">
+          <Routes>
+            <Route
+              path='/'
+              element={isLoggedIn ? <Home /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/home'
+              element={isLoggedIn ? <Home /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/login-and-registration'
+              element={isLoggedIn ? <Navigate to='/profile' /> : <LoginAndRegistration />}
+            />
+            <Route
+              path='/profile'
+              element={isLoggedIn ? <Profile /> : <Navigate to='/login-and-registration' />}
+            />
+
+            <Route
+              path='/favorite'
+              element={isLoggedIn ? <Favorite /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/collection'
+              element={isLoggedIn ? <Collection /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/questionPage'
+              element={isLoggedIn ? <QuestionPage /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/resultPage'
+              element={isLoggedIn ? <ResultPage /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/everything'
+              element={isLoggedIn ? <Everything /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/gameDetail'
+              element={isLoggedIn ? <GameDetail /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='/mobilePage'
+              element={isLoggedIn ? <MobilePage /> : <Navigate to='/login-and-registration' />}
+            />
+            <Route
+              path='*'
+              element={<PageNotFound />}
+            />
+          </Routes>
+        </div>
+      </div>
+      <PageFooter />
     </div>
   );
-};
+}
 
-const AppWrapper = () => (
-  <Router>
-    <AnswerProvider>
-      <FavoriteProvider>
-        <CollectionProvider>
-            <AuthContext>
-              <App />
-            </AuthContext>
-        </CollectionProvider>
-      </FavoriteProvider>
-    </AnswerProvider>
-  </Router>
-);
-
-export default AppWrapper;
+export default App;

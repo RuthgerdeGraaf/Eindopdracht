@@ -1,6 +1,6 @@
 import React from 'react';
 import './Button.scss';
-import Icon from '../../icons/Icon';
+import Icon from '../../assets/icons/Icon.jsx';
 
 const DarkModeButton = ({ darkMode, toggleDarkMode }) => {
   return (

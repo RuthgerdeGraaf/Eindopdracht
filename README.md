@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+Figma project: https://www.figma.com/design/D8MdvCPw8iaZRo4cXTMVIP/What-2-play?node-id=0-1&t=P45dQcFGUdPqmprE-0<br>
+GitHub repository: https://github.com/RuthgerdeGraaf/Eindopdracht
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# What to Play ?
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+* [About this project](#About_this_project)<br>
+* [Requirements](#Requirements)<br>
+* [Installation](#Installation)<br>
+* [Getting started](#Getting_started)<br>
+<br><br>
 
-### `npm start`
+### About this project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project was made as a final assignment for the [NOVI bootcamp Web Developer](https://www.novi.nl/web-developer/?utm_term=&utm_campaign=SDIM+-+NOVI+-+Bootcamps+%26+cursussen++-+22-12-2023&utm_source=adwords&utm_medium=ppc&hsa_acc=4280163138&hsa_cam=20931369307&hsa_grp=162780385652&hsa_ad=687075452769&hsa_src=g&hsa_tgt=aud-1929441721854:dsa-2323820375447&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQjw_qexBhCoARIsAFgBletHdiNu85SnQBKQUJSGRaNst9MHD_o8260xum2Z0BV7Cex369keIXMaAoxSEALw_wcB) Frontend course. I created a webshop that sells men's and women's clothing, electronics and jewelry using [fakeStoreApi](https://fakestoreapi.com/docs) and the [NOVI Educational Backend](https://novi.datavortex.nl/). Users can:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* create a user account and edit account information
+* see their user profile (logged in users only)
+* login and logout
 
-### `npm test`
+### Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Runtime environment
 
-### `npm run build`
+To install and run this project on your local machine, Node.js is required. You can get Node.js [here](https://nodejs.org/en).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The project uses [RAWG](https://rawg.io/apidocs).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Backend
 
-### `npm run eject`
+The [NOVI Educational Backend](https://novi.datavortex.nl/) was provided by [NOVI Hogeschool](https://www.novi.nl/?utm_term=novi%20hogeschool&utm_campaign=SDIM+-+NOVI+-+Branded++-+22-12-2023&utm_source=adwords&utm_medium=ppc&hsa_acc=4280163138&hsa_cam=20882328921&hsa_grp=157473255015&hsa_ad=685547414547&hsa_src=g&hsa_tgt=aud-1929441721854:kwd-853861328135&hsa_kw=novi%20hogeschool&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQjw_qexBhCoARIsAFgBlesmYcB3FUcXIxt_UghxIsCzDt7_GbSVXnr1MyhFws0Fahj6eG1AcxkaAms2EALw_wcB).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Download and install [Node.js](https://nodejs.org/en).
+2. Download and install the latest version of [npm](https://www.npmjs.com/):
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm install -g npm@latest
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Clone the What to Play repository:
 
-## Learn More
+```
+//https://github.com/RuthgerdeGraaf/Eindopdracht.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+or 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+git@github.com:Ruthger-de-Graaf/Eindopdracht.git
+```
 
-### Code Splitting
+4. Install npm packages:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm install
+```
 
-### Analyzing the Bundle Size
+### Getting started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Available npm commands
 
-### Making a Progressive Web App
+`npm run dev`<br>
+Runs the app in development mode.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`npm run build`<br>
+Triggers the build process.
 
-### Advanced Configuration
+`npm run lint`<br>
+Starts the linting process.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`npm run preview`<br>
+Runs a preview based on a build.
 
-### Deployment
+#### Test account
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can create your own test account, or log in using these user credentials:
+```
+username: RuthgerdeGraaf
+password: Test123!
+```
