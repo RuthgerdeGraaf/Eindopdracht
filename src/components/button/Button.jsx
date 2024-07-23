@@ -1,18 +1,16 @@
-import React from 'react';
 import './Button.scss';
-import Icon from '../../icons/Icon';
 
-const Button = ({ variant, children, disabled, icon, ...props }) => {
-  return (
-    <button 
-      className={`button ${variant}`} 
-      disabled={disabled} 
-      {...props}
-    >
-      {icon && <span className="button-icon"><Icon name={icon} /></span>}
-      {children}
-    </button>
-  );
-};
+const Button = ({ type, buttonText, icon, onClick, id }) => {
+    return (
+        <button
+            type={type}
+            className='regular-button'
+            onClick={id ? () => onClick(id) : onClick}
+        >
+            {buttonText}
+            {icon}
+        </button>
+    );
+}
 
 export default Button;

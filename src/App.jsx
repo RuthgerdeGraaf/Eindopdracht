@@ -8,25 +8,22 @@ import {
   useNavigate,
 } from "react-router-dom";
 import "./App.scss";
-import Header from "../src/components/header/Header";
-import Footer from "../src/components/footer/Footer";
+import Header from "./components/header/Header.jsx";
+import Footer from "./components/footer/Footer.jsx";
 import Login from "./pages/login/Login.jsx";
-import Home from "../src/pages/home/Home";
+import Home from "./pages/home/Home.jsx";
 import Favorite from "./pages/favorite/Favorite.jsx";
 import Collection from "./pages/collection/Collection.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import QuestionPage from "./pages/questionPage/QuestionPage.jsx";
 import ResultPage from "./pages/resultPage/ResultPage.jsx";
-import { AnswerProvider, AnswerContext } from "./context/AnswerContext";
+import { AnswerProvider, AnswerContext } from "./context/AnswerContext.jsx";
 import Everything from "./pages/everything/Everything.jsx";
 import GameDetail from "./pages/gameDetail/GameDetail.jsx";
 import MobilePage from "./pages/mobilePage/MobilePage.jsx";
-import { UserProvider } from "./context/UserContext";
-import { FavoriteProvider } from "./context/FavoriteContext";
-import { CollectionProvider } from "./context/CollectionContext";
-import { AuthProvider } from "./context/AuthContext";
-import CreateAccount from "./components/createAccount/CreateAccount.jsx";
-import Users from "./pages/users/UserPage.jsx";
+import { FavoriteProvider } from "./context/FavoriteContext.jsx";
+import { CollectionProvider } from "./context/CollectionContext.jsx";
+import { AuthContext } from "./context/AuthContext.jsx";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -48,7 +45,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Check if token exists in localStorage
     const token = localStorage.getItem("token");
     setAuthenticated(!!token);
   }, []);
@@ -81,7 +77,6 @@ const App = () => {
             path="/"
             element={authenticated ? <Navigate to="/home" /> : <Login />}
           />
-          <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/login" element={<Login />} />
           {authenticated && <Route path="/home" element={<Home />} />}
           {authenticated && <Route path="/favorite" element={<Favorite />} />}
@@ -96,7 +91,6 @@ const App = () => {
           )}
           {authenticated && <Route path="/game/:id" element={<GameDetail />} />}
           {authenticated && <Route path="/mobile" element={<MobilePage />} />}
-          {authenticated && <Route path="/users" element={<Users />} />}
           {!authenticated && (
             <Route path="*" element={<Navigate to="/login" />} />
           )}
@@ -112,11 +106,9 @@ const AppWrapper = () => (
     <AnswerProvider>
       <FavoriteProvider>
         <CollectionProvider>
-          <UserProvider>
-            <AuthProvider>
+            <AuthContext>
               <App />
-            </AuthProvider>
-          </UserProvider>
+            </AuthContext>
         </CollectionProvider>
       </FavoriteProvider>
     </AnswerProvider>

@@ -1,87 +1,115 @@
-import React, { useState, useEffect } from 'react';
-import Avatar from '../../components/avatar/Avatar';
-import { useUser } from '../../context/UserContext';
-import { getUser, updateUser, uploadAvatar } from '../../api/userApi';
+import { useState, useEffect, useContext, } from 'react';
+import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
 
-function Settings() {
-    const { username, setUsername } = useUser();
-    const [avatar, setAvatar] = useState(null);
-    const [avatarUrl, setAvatarUrl] = useState('');
-    const [password, setPassword] = useState('');
+import { AuthContext } from '../../context/AuthContext';
+
+import Form from '../../components/form/Form.jsx';
+import UserProfile from '../../components/userProfile/UserProfile.jsx';
+
+import validateForm from '../../helpers/validateForm';
+
+import './Settings.scss';
+
+const Settings = () => {
+    const { username, email, password, info, toggleNeedsUpdate } = useContext(AuthContext);
+    const [errorMessages, setErrorMessages] = useState({});
+    const [statusCode, setStatusCode] = useState('');
+    const [statusMessage, setStatusMessage] = useState('');
+    const [edit, toggleEdit] = useState(false);
+    const [formState, setFormState] = useState({
+        username,
+        email,
+        password,
+        info,
+    });
+
+    function handleChange(e) {
+        const changedFieldName = e.target.name;
+        const newValue = e.target.value;
+        setFormState({
+            ...formState,
+            [changedFieldName]: newValue,
+        });
+    }
+
+    const storedToken = localStorage.getItem('token');
+    let decodedStoredToken;
+    async function updateUserProfile() {
+        try {
+            if (storedToken) {
+                decodedStoredToken = jwtDecode(storedToken);
+            }
+            const response = await axios.put(`https://api.datavortex.nl/whattoplay/users/${decodedStoredToken.sub}`, formState, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${storedToken}`,
+                },
+            });
+            setStatusCode(response.status);
+            toggleNeedsUpdate(true);
+        } catch (error) {
+            setStatusCode('error');
+            console.error(error);
+        }
+    }
+
+    function handleClick(e, form) {
+        e.preventDefault();
+        const errors = validateForm(formState, form);
+        setErrorMessages(errors);
+        if (e.target.textContent === 'Discard changes') {
+            toggleEdit(!edit);
+        } else if (Object.keys(errors).length === 0) {
+            updateUserProfile();
+            toggleEdit(!edit);
+        }
+    }
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            if (username) {
-                try {
-                    const userData = await getUser(username);
-                    setAvatarUrl(userData.avatarUrl);
-                } catch (error) {
-                    console.error('Error fetching user data:', error);
-                }
-            }
-        };
-        fetchUserData();
-    }, [username]);
-
-    const handleAvatarChange = (event) => {
-        const file = event.target.files[0];
-        setAvatar(file);
-    };
-
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (avatar) {
-            try {
-                await uploadAvatar(username, avatar);
-                const userData = await getUser(username);
-                setAvatarUrl(userData.avatarUrl);
-            } catch (error) {
-                console.error('Error uploading avatar:', error);
-            }
+        switch (statusCode) {
+            case '':
+                setStatusMessage('');
+                break;
+            case 204:
+                setStatusMessage('User profile updated');
+                break;
+            case 'error':
+                setStatusMessage('User profile update failed');
+                break;
         }
-        const userData = { username, password };
-        await updateUser(username, userData);
-    };
+    }, [statusCode])
 
     return (
-        <div>
-            <h1>Settings</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <Avatar className='avatar' src={avatarUrl} />
-                    <input type="file" id="avatar" onChange={handleAvatarChange} />
-                </div>
-                <div>
-                    <label htmlFor="username">Change your username</label>
-                    <input 
-                        className='small-input-field'
-                        placeholder="Username"
-                        type="text" 
-                        id="username" 
-                        value={username} 
-                        onChange={handleUsernameChange} />
-                </div>
-                <div>
-                    <label htmlFor="password">Change your password</label>
-                    <input 
-                        className='small-input-field'
-                        placeholder="Password" 
-                        type="password" 
-                        id="password" 
-                        value={password} 
-                        onChange={handlePasswordChange} />
-                </div>
-                <button className='submit-button' type="submit">Save</button>
-            </form>
-        </div>
+        <main>
+            <header>
+                <h2>
+                    User profile
+                </h2>
+            </header>
+            {
+                edit ?
+                    <Form
+                        form='profile'
+                        formState={formState}
+                        handleChange={handleChange}
+                        handleClick={handleClick}
+                        errorMessages={errorMessages}
+                        statusCode={statusCode}
+                        statusMessage={statusMessage}
+                    />
+                    :
+                    <UserProfile
+                        statusCode={statusCode}
+                        statusMessage={statusMessage}
+                        username={username}
+                        email={email}
+                        info={info}
+                        edit={edit}
+                        toggleEdit={toggleEdit}
+                    />
+            }
+        </main>
     );
 }
 

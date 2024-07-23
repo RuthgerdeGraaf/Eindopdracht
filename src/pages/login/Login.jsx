@@ -1,109 +1,125 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import Form from '../../components/form/Form.jsx';
+import validateForm from '../../helpers/validateForm';
+import createUser from '../../helpers/createUser';
+
 import './Login.scss';
-import w2p from '../../img/What2Play.jpeg';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
-    const navigate = useNavigate();
+    const [activeTab, toggleActiveTab] = useState(true);
+    const [errorMessages, setErrorMessages] = useState({});
+    const [statusCode, setStatusCode] = useState('');
+    const [statusMessage, setStatusMessage] = useState('');
+    const [formState, setFormState] = useState({
+        username: '',
+        email: '',
+        password: '',
+        info: ''
+    });
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-    };
+    const { login } = useContext(AuthContext);
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-        const response = await fetch('https://api.datavortex.nl/whattoplay/users/authenticate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Api-Key': 'whattoplay:ooBH8YLepfnOLSLnHj41',
-            },
-            body: JSON.stringify({ username, password }),
+    function handleChange(e) {
+        const changedFieldName = e.target.name;
+        const newValue = e.target.value;
+        setFormState({
+            ...formState,
+            [changedFieldName]: newValue,
         });
-
-        const text = await response.text();
-        console.log('Response status:', response.status);
-        console.log('Response text:', text);
-
-        if (!response.ok) {
-            if (response.status === 403) {
-                throw new Error('Access is forbidden. Please check your API key and user permissions.');
-            }
-            throw new Error('Login failed: ' + response.status);
-        }
-
-        let data;
-        try {
-            data = JSON.parse(text);
-        } catch (error) {
-            console.error('Error parsing JSON:', error);
-            console.log('Response text that caused parsing error:', text);
-            throw new Error('Failed to parse response as JSON');
-        }
-
-        const token = data.token;
-        if (!token) {
-            console.error('Token not found in response:', data);
-            throw new Error('Login failed: No token received.');
-        }
-
-        localStorage.setItem('token', token);
-
-        navigate('/home');
-    } catch (error) {
-        console.error('Login error:', error);
-        alert(error.message);
     }
-};
 
+    function handleClick(e, form) {
+        e.preventDefault();
+        const errors = validateForm(formState, form);
+        setErrorMessages(errors);
+        if (activeTab) {
+            login(formState, setStatusCode);
+        } else if (Object.keys(errors).length === 0) {
+            createUser(formState, setStatusCode);
+        }
+    }
 
-    const isFormValid = username.trim() !== '' && password.trim() !== '';
+    useEffect(() => {
+        switch (statusCode) {
+            case '':
+                setStatusMessage('');
+                break;
+            case 200:
+                activeTab ?
+                    setStatusMessage('Login successful')
+                    :
+                    setStatusMessage('Registration successful');
+                break;
+            case 'error':
+                activeTab ?
+                    setStatusMessage('Login failed')
+                    :
+                    setStatusMessage('Registration failed');
+                break;
+        }
+    }, [activeTab, statusCode]);
+
+    useEffect(() => {
+        setFormState({
+            username: '',
+            email: '',
+            password: '',
+            info: '',
+        });
+        setStatusCode('');
+        setErrorMessages({});
+    }, [activeTab]);
 
     return (
-        <div className="login-page">
-            <img src={w2p} alt="What2Play Logo" className="login-logo" />
-            <div className='login-container'>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            className="small-input-field"
-                            type="text"
-                            value={username}
-                            onChange={handleUsernameChange}
-                            placeholder='Username'
-                            required
-                        />
-                    </div>
-                    <div>
-                        <input
-                            className='small-input-field'
-                            type="password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder='Password'
-                            required
-                        />
-                    </div>
-                    <button className="login-button" type="submit" disabled={!isFormValid}>
-                        Login
+        <main>
+            <header>
+                <h2>
+                    Login/registration
+                </h2>
+            </header>
+            <div className='tabs-container'>
+                <div className='tab-button-container'>
+                    <button
+                        type='button'
+                        className='tab-button'
+                        onClick={() => { toggleActiveTab(true) }}
+                    >
+                        I have an account
                     </button>
-                </form>
-                {error && <p className="error">{error}</p>}
-                <blockquote className='blockquote'>
-                    Don't have an account? <Link to="/create-account">Create one here</Link>
-                </blockquote>
+                    <button
+                        type='button'
+                        className='tab-button'
+                        onClick={() => { toggleActiveTab(false) }}
+                    >
+                        I am a new customer
+                    </button>
+                </div>
+                {
+                    activeTab ?
+                        <Form
+                            form='login'
+                            formState={formState}
+                            handleChange={handleChange}
+                            handleClick={handleClick}
+                            errorMessages={errorMessages}
+                            statusCode={statusCode}
+                            statusMessage={statusMessage}
+                        />
+                        :
+                        <Form
+                            form='registration'
+                            formState={formState}
+                            handleChange={handleChange}
+                            handleClick={handleClick}
+                            errorMessages={errorMessages}
+                            statusCode={statusCode}
+                            statusMessage={statusMessage}
+                        />
+                }
             </div>
-        </div>
+        </main>
     );
-};
+}
 
 export default Login;
