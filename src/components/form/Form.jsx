@@ -1,19 +1,23 @@
 // Components
-import FormItem from '../formItem/FormItem';
+import FormItem from '../form-item/FormItem';
 import Button from '../button/Button';
 
+// Constants
 import loginItems from '../../constants/loginItems';
 import registrationItems from '../../constants/registrationItems';
 import profileItems from '../../constants/profileItems';
 
-import './Form.scss';
+// Style
+import './form.css';
 
 const Form = ({ form, formState, handleChange, handleClick, errorMessages, statusCode, statusMessage }) => {
+    // const profileItems = ['username', 'email', 'info'];
 
     return (
         <form className={`login-registration-form ${form}`} action=''>
             {
                 form === 'login' ?
+                    // Login form
                     <>
                         {
                             statusMessage &&
@@ -36,6 +40,7 @@ const Form = ({ form, formState, handleChange, handleClick, errorMessages, statu
                     </>
                     :
                     form === 'registration' ?
+                        // Registration form
                         <>
                             {
                                 statusMessage &&
@@ -57,6 +62,7 @@ const Form = ({ form, formState, handleChange, handleClick, errorMessages, statu
                             }
                         </>
                         :
+                        // Profile form
                         <>
                             {
                                 profileItems.map((profileItem) => {
@@ -72,6 +78,7 @@ const Form = ({ form, formState, handleChange, handleClick, errorMessages, statu
                             }
                         </>
             }
+            {/* Login/registration button */}
             {
                 form === 'profile' ?
                     <div className='profile-button-container'>

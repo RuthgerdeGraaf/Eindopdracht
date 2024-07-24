@@ -25,8 +25,8 @@
     }
 
     h1 {
-        color: $darkbluegreen;
-        font-size: 24px;
+        color: $gold;
+        font-size: 48px;
         margin: 0;
     }
 
@@ -92,8 +92,16 @@ nav {
     }
 }
 
-.dark-mode-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .dark-mode .header {
+    background-color: $darkbluegreen;
+  }
+  
+  .dark-mode .dark-mode-button {
+    color: #ffffff;
+  }
+  

@@ -1,26 +1,26 @@
 import React, { useState, useContext } from 'react';
 import './QuestionPage.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import computerImage from '../../img/Computer.jpeg';
-import playstationImage from '../../img/Playstation.jpeg';
-import xboxImage from '../../img/Xbox.jpeg';
-import nintendoImage from '../../img/Switch.jpeg';
-import mobileImage from '../../img/Mobile.jpeg';
-import everythingImage from '../../img/Everything.jpeg';
-import onePlayerImage from '../../img/OnePlayer.jpeg';
-import twoPlayerImage from '../../img/TwoPlayers.jpeg';
-import fourPlayerImage from '../../img/FourPlayers.jpeg';
-import onlineImage from '../../img/Online.jpeg';
-import offlineImage from '../../img/Offline.jpeg';
-import mysteryGameImage from '../../img/MysteryGame.jpeg';
-import hackSlashGameImage from '../../img/HackSlashGame.jpg';
-import racingGameImage from '../../img/RacingGame.jpeg';
-import shooterGameImage from '../../img/ShooterGame.jpeg';
-import adventureGameImage from '../../img/AdventureGame.jpeg';
-import partyGameImage from '../../img/PartyGame.jpeg';
-import payImage from '../../img/PayForIt.jpeg';
-import dontPayImage from '../../img/DontPayForIt.jpeg';
-import { Return } from '../../icons/Icon';
+import computerImage from '../../assets/img/Computer.jpeg';
+import playstationImage from '../../assets/img/Playstation.jpeg';
+import xboxImage from '../../assets/img/Xbox.jpeg';
+import nintendoImage from '../../assets/img/Switch.jpeg';
+import mobileImage from '../../assets/img/Mobile.jpeg';
+import everythingImage from '../../assets/img/Everything.jpeg';
+import onePlayerImage from '../../assets/img/OnePlayer.jpeg';
+import twoPlayerImage from '../../assets/img/TwoPlayers.jpeg';
+import fourPlayerImage from '../../assets/img/FourPlayers.jpeg';
+import onlineImage from '../../assets/img/Online.jpeg';
+import offlineImage from '../../assets/img/Offline.jpeg';
+import mysteryGameImage from '../../assets/img/MysteryGame.jpeg';
+import hackSlashGameImage from '../../assets/img/HackSlashGame.jpg';
+import racingGameImage from '../../assets/img/RacingGame.jpeg';
+import shooterGameImage from '../../assets/img/ShooterGame.jpeg';
+import adventureGameImage from '../../assets/img/AdventureGame.jpeg';
+import partyGameImage from '../../assets/img/PartyGame.jpeg';
+import payImage from '../../assets/img/PayForIt.jpeg';
+import dontPayImage from '../../assets/img/DontPayForIt.jpeg';
+import { Return } from '../../assets/icons/Icon.jsx';
 import { AnswerContext } from '../../context/AnswerContext';
 
 const initialQuestions = [
@@ -94,7 +94,7 @@ function QuestionPage() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      navigate('/result');
+      navigate('/resultPage');
     }
   };
 
