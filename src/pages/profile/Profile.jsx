@@ -7,13 +7,13 @@ import { AuthContext } from '../../context/AuthContext';
 
 // Components
 import Form from '../../components/form/Form';
-import UserProfile from '../../components/user-profile/UserProfile';
+import UserProfile from '../../components/userProfile/UserProfile';
 
 // Helpers
 import validateForm from '../../helpers/validateForm';
 
 // Style
-import './profile.css';
+import './profile.scss';
 
 const Profile = () => {
     const { username, email, password, info, toggleNeedsUpdate } = useContext(AuthContext);
@@ -93,11 +93,11 @@ const Profile = () => {
     }, [statusCode])
 
     return (
-        <main>
+        <main className='form'>
             <header>
-                <h2>
+                <h1>
                     User profile
-                </h2>
+                </h1>
             </header>
             {
                 edit ?

@@ -10,7 +10,7 @@ function ResultPage() {
     const [fallbackGames, setFallbackGames] = useState([]);
     const [isFallback, setIsFallback] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const gamesPerPage = 10;
+    const gamesPerPage = 9;
 
     useEffect(() => {
         const getFiltersFromAnswers = () => {
@@ -77,8 +77,8 @@ function ResultPage() {
                 ))}
             </div>
             <div className="pagination">
-                <button onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
-                <button onClick={nextPage} disabled={isFallback ? currentPage * gamesPerPage >= fallbackGames.length : currentPage * gamesPerPage >= games.length}>Next Page</button>
+                <button className="previous" onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
+                <button className="next" onClick={nextPage} disabled={isFallback ? currentPage * gamesPerPage >= fallbackGames.length : currentPage * gamesPerPage >= games.length}>Next Page</button>
             </div>
         </div>
     );

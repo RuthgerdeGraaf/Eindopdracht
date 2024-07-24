@@ -1,5 +1,5 @@
 // Components
-import FormItem from '../form-item/FormItem';
+import FormItem from '../formItem/FormItem';
 import Button from '../button/Button';
 
 // Constants

@@ -7,7 +7,7 @@ const Favorite = () => {
 
     return (
         <div>
-            <h2>Your Favorite Games</h2>
+            <h1>Your Favorite Games</h1>
             <div className="game-list">
                 {favorites.length === 0 ? (
                     <p>No favorite games found.</p>

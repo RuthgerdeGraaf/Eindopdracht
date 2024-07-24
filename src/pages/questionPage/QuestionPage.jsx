@@ -31,7 +31,7 @@ const initialQuestions = [
       { src: xboxImage, alt: "X Box", filter: { platforms: '1' } },
       { src: nintendoImage, alt: "Nintendo", filter: { platforms: '7' } },
       { src: computerImage, alt: "Computer", filter: { platforms: '4' } },
-      { link: '/mobile', src: mobileImage, alt: "Mobile" },
+      { link: '/mobilePage', src: mobileImage, alt: "Mobile" },
       { link: '/everything', src: everythingImage, alt: "Everything" },
     ],
   },
@@ -109,7 +109,7 @@ function QuestionPage() {
   return (
     <div>
       <h1>{questions[currentQuestion].question}</h1>
-      <div classname="questions">
+      <div className={`questions ${questions[currentQuestion].options.length > 5 ? 'two-rows' : ''}`}>
         {questions[currentQuestion].options.map((option, index) => (
           option.link ? (
             <Link key={index} to={option.link}>

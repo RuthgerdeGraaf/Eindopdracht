@@ -2,7 +2,18 @@
 
 .questions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    align-content: center;
+    align-self: stretch;
     margin-top: 20px;
+}
+.round-image {
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: scale(1.5);
+    }
 }

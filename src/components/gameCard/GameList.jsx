@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { fetchGames } from '../../api/rawgApi.js';
 import GameCard from './GameCard.jsx';
+// import GameModal from '../modal/GameModal.jsx';
 import './GameList.scss';
+import '../../../src/components/button/Button.scss';
+
 
 const GameList = () => {
     const [games, setGames] = useState([]);
     const [filters, setFilters] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
-    const gamesPerPage = 10;
+    const gamesPerPage = 9;
 
 useEffect(() => {
     const fetchData = async () => {
@@ -102,8 +105,8 @@ useEffect(() => {
                     ))}
             </div>
             <div className="pagination">
-                <button onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
-                <button onClick={nextPage} disabled={games.length < gamesPerPage}>Next Page</button>
+                <button className="previous" onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
+                <button className="next" onClick={nextPage} disabled={games.length < gamesPerPage}>Next Page</button>
             </div>
         </div>
     );

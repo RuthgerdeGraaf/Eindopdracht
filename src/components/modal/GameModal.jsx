@@ -36,13 +36,12 @@ const GameModal = ({ isOpen, onClose, game }) => {
     return (
         <div className="modal" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <h2>{game.name}</h2>
-                <div className="modal-image-container">
-                    <img src={game.background_image} alt={game.name} />
+                  <div className="modal-image-container">
                     <div className="modal-buttons">
                         <button className="favorite-button" onClick={handleFavoriteClick}>
                             {isFavorite ? <Liked /> : <Like />}
                         </button>
+                        <h3>{game.name}</h3>
                         <button className="collection-button" onClick={handleCollectionClick}>
                             {isInCollection ? <Added /> : <Add />}
                         </button>
