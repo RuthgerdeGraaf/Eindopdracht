@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mina&family=Rokkitt:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* CSS reset */
 
@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Mina', sans-serif;
   font-weight: 400;
   color: var(--black);
 }
@@ -38,7 +38,7 @@ body {
 
 /* ---- Shop name */
 h1 {
-  font-family: 'Luckiest Guy', sans-serif;
+  font-family: 'Mina', sans-serif;
   font-size: 2.25rem;
   letter-spacing: .1rem;
   line-height: 100%;
@@ -103,7 +103,7 @@ select:hover {
 /* Buttons */
 
 button {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rokkitt', sans-serif;
   font-size: 0.875rem;
 }
 

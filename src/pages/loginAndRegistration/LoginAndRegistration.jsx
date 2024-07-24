@@ -89,12 +89,12 @@ const LoginAndRegistration = () => {
         <main>
             <header>
                 <h2>
-                    Login/registration
+                    Welcome, here you can {activeTab ? 'login' : 'register'}
                 </h2>
             </header>
-            <div className='tabs-container'>
+            <div>
                 {/* Tab titles */}
-                <div className='tab-button-container'>
+                <div>
                     <button
                         type='button'
                         className='tab-button'

@@ -13,16 +13,6 @@
     position: relative;
 }
 
-.login:after,
-.registration:after {
-    content: '';
-    background: var(--black);
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 1px;
-}
-
 /* Login form */
 
 .login:after {

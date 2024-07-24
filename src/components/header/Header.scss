@@ -28,6 +28,7 @@
         color: $gold;
         font-size: 48px;
         margin: 0;
+        padding: 10px;
     }
 
     p {
@@ -35,6 +36,11 @@
         font-size: 16px;
         margin: 10px 0;
     }
+        .dark-mode-button {
+        background-color: transparent;
+        border: none;
+        margin: auto;
+        }
 }
 
 nav {
@@ -99,9 +105,5 @@ body.dark-mode {
   
   .dark-mode .header {
     background-color: $darkbluegreen;
-  }
-  
-  .dark-mode .dark-mode-button {
-    color: #ffffff;
   }
   
