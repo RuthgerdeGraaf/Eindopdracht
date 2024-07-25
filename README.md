@@ -5,19 +5,23 @@ GitHub repository: https://github.com/RuthgerdeGraaf/Eindopdracht
 
 ## Table of contents
 
-* [About this project](#About_this_project)<br>
-* [Requirements](#Requirements)<br>
-* [Installation](#Installation)<br>
-* [Getting started](#Getting_started)<br>
-<br><br>
+- [About this project](#About_this_project)<br>
+- [Requirements](#Requirements)<br>
+- [Installation](#Installation)<br>
+- [Getting started](#Getting_started)<br>
+  <br><br>
 
 ### About this project
 
-This project was made as a final assignment for the [NOVI bootcamp Web Developer](https://www.novi.nl/web-developer/?utm_term=&utm_campaign=SDIM+-+NOVI+-+Bootcamps+%26+cursussen++-+22-12-2023&utm_source=adwords&utm_medium=ppc&hsa_acc=4280163138&hsa_cam=20931369307&hsa_grp=162780385652&hsa_ad=687075452769&hsa_src=g&hsa_tgt=aud-1929441721854:dsa-2323820375447&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQjw_qexBhCoARIsAFgBletHdiNu85SnQBKQUJSGRaNst9MHD_o8260xum2Z0BV7Cex369keIXMaAoxSEALw_wcB) Frontend course. I created a webshop that sells men's and women's clothing, electronics and jewelry using [fakeStoreApi](https://fakestoreapi.com/docs) and the [NOVI Educational Backend](https://novi.datavortex.nl/). Users can:
+This project was made as a final assignment for the NOVI bootcamp Web Developer Frontend Bootcamp. I created an app where users can figure out what to play through a couple of questions. I used [RAWGApi](https://rawg.io/apidocs) and the [NOVI Educational Backend](https://novi.datavortex.nl/). Users can:
 
-* create a user account and edit account information
-* see their user profile (logged in users only)
-* login and logout
+- Create a user account and edit account information
+- See their user profile (logged in users only)
+- Login and logout
+- Add / remove games to their favorite / collection list
+- Add some info about themselves
+- Hover over games to get more information about it
+- Get trolled when they think they're gamers on mobilephones
 
 ### Requirements
 
@@ -48,7 +52,7 @@ npm install -g npm@latest
 //https://github.com/RuthgerdeGraaf/Eindopdracht.git
 ```
 
-or 
+or
 
 ```
 git@github.com:Ruthger-de-Graaf/Eindopdracht.git
@@ -79,6 +83,7 @@ Runs a preview based on a build.
 #### Test account
 
 You can create your own test account, or log in using these user credentials:
+
 ```
 username: RuthgerdeGraaf
 password: Test123!
