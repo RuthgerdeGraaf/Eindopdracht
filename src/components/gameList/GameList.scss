@@ -1,0 +1,21 @@
+@import 'src/styles/vars';
+
+.game-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+}
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px;
+}

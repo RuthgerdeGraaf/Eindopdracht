@@ -1,5 +1,9 @@
 import React from 'react';
+
+// Context
 import { useCollection } from '../../context/CollectionContext';
+
+// Components
 import GameCard from '../../components/gameCard/GameCard';
 
 const Collection = () => {
@@ -7,7 +11,7 @@ const Collection = () => {
 
     return (
         <div>
-            <h2>Your Game Collection</h2>
+            <h1>Your Game Collection</h1>
             <div className="game-list">
                 {collection.length === 0 ? (
                     <p>No games in your collection.</p>

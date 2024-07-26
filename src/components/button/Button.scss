@@ -4,13 +4,13 @@
     padding: 10px 20px;
     margin: auto;
     border: none;
-    cursor: pointer;
     font-size: 16px;
     display: flex;
+    color: $dark;
     align-items: center;
     justify-content: center;
-    background-color: $lightbluegreen;
-    cursor: pointer;
+    border-radius: 20px;
+    background-color: $orange;
 }
 
 .button.login {
@@ -22,28 +22,37 @@
     color: $darkbluegreen;
 }
 
-.button.next {
-    color: $lightbluegreen;
+.next {
+    display: flex;
+    justify-content: flex-start;
+    color: $dark;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
-    width: 100px;
+    font-size: 2rem;
+    width: 20%;
+    padding: 10px 0px 10px 30px;
+    background-color: $pink;
 }
 
-.button.previous {
-    color: $lightbluegreen;
+.previous {
+    display: flex;
+    justify-content: flex-end;
+    color: $dark;
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
-    width: 100px;
+    font-size: 2rem;
+    width: 20%;
+    padding: 10px 30px 10px 0;
+    background-color: $pink;
 }
 
-.button.next:hover {
-    background-color: $light;
-    color: $dark;
+.next:hover, .previous:hover {
+    background-color: $darkpink;
 }
 
-.button.previous:hover {
-    background-color: $light;
-    color: $dark;
+.next:disabled, .previous:disabled {
+    background-color: transparent;
+    color: $metal;
 }
 
 .button-return {
@@ -65,7 +74,6 @@
     display: inline-block;
     padding: 10px 46px;
     margin-right: 50px;
-    cursor: pointer;
     background-color: $lightbluegreen;
     border-radius: 4px;
     color: $darkbluegreen;
@@ -97,4 +105,11 @@
 
 .button-dropdown:hover ul {
     display: block;
+}
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    background-color: $lightbluegreen;
 }

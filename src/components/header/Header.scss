@@ -28,6 +28,7 @@
         color: $gold;
         font-size: 48px;
         margin: 0;
+        padding: 10px;
     }
 
     p {
@@ -35,6 +36,11 @@
         font-size: 16px;
         margin: 10px 0;
     }
+        .dark-mode-button {
+        background-color: transparent;
+        border: none;
+        margin: auto;
+        }
 }
 
 nav {
@@ -53,8 +59,7 @@ nav {
     position: relative;
 
     &:hover {
-        background-color: $lightbluegreen;
-        border-radius: 4px 4px 0 0;
+        box-shadow: 0px 8px 16px 0px $darkbluegreen;
 
         ul {
             display: block;
@@ -67,7 +72,7 @@ nav {
         top: 100%;
         left: 0;
         background-color: $lightbluegreen;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 8px 16px 0px $dark;
         z-index: 1;
         padding: 0;
         margin: 0;
@@ -92,16 +97,24 @@ nav {
     }
 }
 
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-  }
-  
-  .dark-mode .header {
+.dark-mode .header {
     background-color: $darkbluegreen;
   }
-  
-  .dark-mode .dark-mode-button {
-    color: #ffffff;
-  }
-  
+.dark-mode .dropdown-menu {
+    background-color: $darkbluegreen;
+    color: $lightbluegreen;
+    &:hover {
+            box-shadow: 0px 8px 16px 0px $lightbluegreen;
+    }
+}
+.dark-mode .dropdown-menu ul {
+    background-color: $darkbluegreen;
+    box-shadow: 0px 8px 16px 0px $lightbluegreen;
+    color: $lightbluegreen;
+}
+.dark-mode .dropdown-menu li {
+    color: $lightbluegreen;
+    &:hover {
+        background-color: $dark;
+    }
+}

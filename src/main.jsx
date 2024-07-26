@@ -6,7 +6,7 @@ import AuthContextProvider from './context/AuthContext.jsx';
 import { FavoriteProvider } from "./context/FavoriteContext.jsx";
 import { CollectionProvider } from "./context/CollectionContext.jsx";
 import { AnswerProvider } from "./context/AnswerContext.jsx";
-import './index.css';
+import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

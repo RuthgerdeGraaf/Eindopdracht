@@ -1,10 +1,11 @@
+// Styles
 import './Button.scss';
 
 const Button = ({ type, buttonText, icon, onClick, id }) => {
     return (
         <button
             type={type}
-            className='regular-button'
+            className='button'
             onClick={id ? () => onClick(id) : onClick}
         >
             {buttonText}

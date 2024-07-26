@@ -1,5 +1,4 @@
-/* Login and registration form */
-
+@import 'src/styles/vars';
 .login-registration-form {
     padding: 50px 0;
     display: flex;
@@ -12,31 +11,12 @@
 .registration {
     position: relative;
 }
-
-.login:after,
-.registration:after {
-    content: '';
-    background: var(--black);
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 1px;
-}
-
-/* Login form */
-
 .login:after {
     right: 0;
 }
-
-/* Registration form */
-
 .registration:after {
     left: 0;
 }
-
-/* Profile form */
-
 .profile {
     padding: 0;
 }
@@ -45,16 +25,13 @@
     display: flex;
     gap: 10px;
 }
-
-/* Success/error messages */
-
 .statusCode-200,
 .statusCode-204 {
     font-size: 1.5rem;
-    color: var(--green);
+    color: green;
 }
 
 .statusCode-error {
     font-size: 1.5rem;
-    color: var(--red);
+    color: red;
 }

@@ -1,28 +1,10 @@
-.tabs-container {
-    font-size: 1.5rem;
-    border: 1px solid var(--black);
-
-    @media screen and (max-width: 600px) {
-        font-size: .75rem;
-    }
-}
-
+@import 'src/styles/vars';
 .tab-button {
-    width: 50%;
+    width: 20%;
+    border-radius: 20px;
+    color: $gold;
     padding: 24px;
     font-size: 1.5rem;
     border: none;
-    background-color: var(--white);
-
-    @media screen and (max-width: 600px) {
-        font-size: .75rem;
-    }
-}
-
-.tab-button:first-of-type {
-    border-right: 1px solid var(--black);
-}
-
-.tab-button:focus {
-    color: var(--black);
+    background-color: $lightbluegreen;
 }

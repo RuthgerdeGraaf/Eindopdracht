@@ -28,7 +28,6 @@ const GameDetail = () => {
             <h1>{game.name}</h1>
             <img src={game.background_image} alt={game.name} />
             <p>Released: {game.released}</p>
-            {/* Andere details van het spel */}
         </div>
     );
 };

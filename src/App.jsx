@@ -48,7 +48,7 @@ function App() {
           <Routes>
             <Route
               path='/'
-              element={isLoggedIn ? <Home /> : <Navigate to='/login-and-registration' />}
+              element={isLoggedIn ? <Navigate to ='/home' /> : <Navigate to='/login-and-registration' />}
             />
             <Route
               path='/home'

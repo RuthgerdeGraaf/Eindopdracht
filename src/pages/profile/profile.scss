@@ -1,0 +1,39 @@
+@import 'src/styles/vars';
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.profile-title {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-title button {
+    display: flex;
+    margin: 10px;
+    font-size: 1.8rem;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-container h3,
+.profile-container h4 {
+    text-align: left;
+    color: $orange;
+}

@@ -19,8 +19,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 60px; // Hoogte van de header
-  padding-bottom: 48px; // Hoogte van de footer
+  padding-top: 60px;
+  padding-bottom: 48px;
 }
 
 .App-footer {
@@ -51,16 +51,7 @@
   padding-top: 8px;
 }
 
-/* Dark mode stijlen */
 .dark-mode {
   background-color: $dark;
-  color: $lightbluegreen;
-}
-
-.dark-mode .App-footer {
-  background: linear-gradient(to top left, #333 50%, #555 50%);
-}
-
-.dark-mode .App-footer p {
-  color: $lightbluegreen;
+  color: $orange;
 }
