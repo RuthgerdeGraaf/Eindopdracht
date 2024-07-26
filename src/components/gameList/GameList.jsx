@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { fetchGames } from '../../api/rawgApi.js';
-import GameCard from './GameCard.jsx';
-// import GameModal from '../modal/GameModal.jsx';
-import './GameList.scss';
+
+// Components
+import GameCard from '../gameCard/GameCard.jsx';
 import '../../../src/components/button/Button.scss';
+
+// Styles
+import './GameList.scss';
 
 
 const GameList = () => {

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
-import './QuestionPage.scss';
 import { Link, useNavigate } from 'react-router-dom';
+
+// Assets
 import computerImage from '../../assets/img/Computer.jpeg';
 import playstationImage from '../../assets/img/Playstation.jpeg';
 import xboxImage from '../../assets/img/Xbox.jpeg';
@@ -21,7 +22,13 @@ import partyGameImage from '../../assets/img/PartyGame.jpeg';
 import payImage from '../../assets/img/PayForIt.jpeg';
 import dontPayImage from '../../assets/img/DontPayForIt.jpeg';
 import { Return } from '../../assets/icons/Icon.jsx';
+
+// Context
 import { AnswerContext } from '../../context/AnswerContext';
+
+// Styles
+import './QuestionPage.scss';
+
 
 const initialQuestions = [
   {

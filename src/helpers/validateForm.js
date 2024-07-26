@@ -6,12 +6,10 @@ import checkForDot from './checkForDot';
 function validateForm({ username, email, password }, form) {
     const errorMessages = {};
 
-    // Validate username
     if (username.length < 8) {
         errorMessages['usernameError'] = 'Username must be at least 8 characters long.';
     }
 
-    // Validate password
     if (form != 'profile') {
         const capital = checkForCapital(password);
         const number = checkForNumber(password);
@@ -20,7 +18,6 @@ function validateForm({ username, email, password }, form) {
         }
     }
 
-    // Validate email (registration form only)
     const atSign = checkForAtSign(email);
     const dot = checkForDot(email);
     if (form != 'login' && (!atSign || !dot)) {

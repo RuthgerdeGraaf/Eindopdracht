@@ -1,5 +1,9 @@
 import React from 'react';
+
+// Context
 import { useCollection } from '../../context/CollectionContext';
+
+// Components
 import GameCard from '../../components/gameCard/GameCard';
 
 const Collection = () => {

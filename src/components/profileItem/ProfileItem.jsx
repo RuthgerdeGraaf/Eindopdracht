@@ -1,3 +1,4 @@
+// Styles
 import './ProfileItem.scss';
 
 const ProfileItem = ({ item }) => {

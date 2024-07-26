@@ -7,7 +7,7 @@ import Button from '../../components/button/Button';
 import notFoundImage from '../../assets/img/WhereIsThePage.jpg';
 
 // Style
-import './page-not-found.css';
+import './page-not-found.scss';
 
 const PageNotFound = () => {
     const navigate = useNavigate();

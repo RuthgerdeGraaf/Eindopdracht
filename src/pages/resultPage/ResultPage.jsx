@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AnswerContext } from '../../context/AnswerContext';
 import { fetchGames } from '../../api/rawgApi';
+
+// Context
+import { AnswerContext } from '../../context/AnswerContext';
+
+// Components
 import GameCard from '../../components/gameCard/GameCard';
+
+// Styles
 import './ResultPage.scss';
 
 function ResultPage() {

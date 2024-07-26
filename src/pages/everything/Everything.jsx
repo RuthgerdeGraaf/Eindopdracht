@@ -1,6 +1,10 @@
 import React from 'react';
-import './Everything.scss';
-import GameList from '../../components/gameCard/GameList.jsx';
+
+// Components
+import GameList from '../../components/gameList/GameList.jsx';
+
+
+
 
 const Everything = () => {
     return (

@@ -27,7 +27,6 @@ const LoginAndRegistration = () => {
 
     const { login } = useContext(AuthContext);
 
-    // Handle input change
     function handleChange(e) {
         const changedFieldName = e.target.name;
         const newValue = e.target.value;
@@ -37,22 +36,17 @@ const LoginAndRegistration = () => {
         });
     }
 
-    // Handle login/create account button click
     function handleClick(e, form) {
         e.preventDefault();
-        // Validate form and set error messages
         const errors = validateForm(formState, form);
         setErrorMessages(errors);
-        // Login
         if (activeTab) {
             login(formState, setStatusCode);
-            // Create account
         } else if (Object.keys(errors).length === 0) {
             createUser(formState, setStatusCode);
         }
     }
 
-    // Set status message
     useEffect(() => {
         switch (statusCode) {
             case '':
@@ -73,7 +67,6 @@ const LoginAndRegistration = () => {
         }
     }, [activeTab, statusCode]);
 
-    // Clear formState, statusCode and errorMessages when activeTab changes
     useEffect(() => {
         setFormState({
             username: '',
@@ -93,7 +86,6 @@ const LoginAndRegistration = () => {
                 </h2>
             </header>
             <div>
-                {/* Tab titles */}
                 <div>
                     <button
                         type='button'
@@ -112,7 +104,6 @@ const LoginAndRegistration = () => {
                 </div>
                 {
                     activeTab ?
-                        // Login form
                         <Form
                             form='login'
                             formState={formState}
@@ -123,7 +114,6 @@ const LoginAndRegistration = () => {
                             statusMessage={statusMessage}
                         />
                         :
-                        // Registration form
                         <Form
                             form='registration'
                             formState={formState}

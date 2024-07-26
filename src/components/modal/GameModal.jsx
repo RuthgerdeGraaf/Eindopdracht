@@ -1,8 +1,14 @@
 import React from 'react';
-import './GameModal.scss';
+
+// Context
 import { useFavorites } from '../../context/FavoriteContext';
 import { useCollection } from '../../context/CollectionContext';
+
+// Assets
 import { Like, Liked, Add, Added } from '../../assets/icons/Icon.jsx';
+
+// Styles
+import './GameModal.scss';
 
 const GameModal = ({ isOpen, onClose, game }) => {
     const { addFavorite, removeFavorite, favorites } = useFavorites();

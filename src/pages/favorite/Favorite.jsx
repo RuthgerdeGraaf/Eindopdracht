@@ -1,5 +1,9 @@
 import React from 'react';
+
+// Context
 import { useFavorites } from '../../context/FavoriteContext';
+
+// Components
 import GameCard from '../../components/gameCard/GameCard';
 
 const Favorite = () => {

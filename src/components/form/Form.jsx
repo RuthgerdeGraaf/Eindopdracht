@@ -8,16 +8,14 @@ import registrationItems from '../../constants/registrationItems';
 import profileItems from '../../constants/profileItems';
 
 // Style
-import './form.css';
+import './Form.scss';
 
 const Form = ({ form, formState, handleChange, handleClick, errorMessages, statusCode, statusMessage }) => {
-    // const profileItems = ['username', 'email', 'info'];
 
     return (
         <form className={`login-registration-form ${form}`} action=''>
             {
                 form === 'login' ?
-                    // Login form
                     <>
                         {
                             statusMessage &&
@@ -40,7 +38,6 @@ const Form = ({ form, formState, handleChange, handleClick, errorMessages, statu
                     </>
                     :
                     form === 'registration' ?
-                        // Registration form
                         <>
                             {
                                 statusMessage &&
@@ -62,7 +59,6 @@ const Form = ({ form, formState, handleChange, handleClick, errorMessages, statu
                             }
                         </>
                         :
-                        // Profile form
                         <>
                             {
                                 profileItems.map((profileItem) => {
@@ -78,7 +74,6 @@ const Form = ({ form, formState, handleChange, handleClick, errorMessages, statu
                             }
                         </>
             }
-            {/* Login/registration button */}
             {
                 form === 'profile' ?
                     <div className='profile-button-container'>

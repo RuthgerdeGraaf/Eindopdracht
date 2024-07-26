@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// Assets
 import startButton from '../../assets/img/StartButton.jpeg';
-import './Home.scss';
 import { Return } from '../../assets/icons/Icon';
+
+// Styles
+import './Home.scss';
 
 const Home = () => {
   const [message, setMessage] = useState('At any moment you can press this button, to get back to the start!');

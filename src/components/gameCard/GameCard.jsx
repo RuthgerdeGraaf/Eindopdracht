@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import './GameCard.scss';
+
+// Components
 import GameModal from '../../components/modal/GameModal.jsx';
+
+// Styles
+import './GameCard.scss';
 
 const GameCard = ({ game }) => {
     const [modalOpen, setModalOpen] = useState(false);

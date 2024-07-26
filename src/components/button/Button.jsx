@@ -1,3 +1,4 @@
+// Styles
 import './Button.scss';
 
 const Button = ({ type, buttonText, icon, onClick, id }) => {

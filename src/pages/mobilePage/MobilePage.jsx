@@ -1,8 +1,13 @@
 import React from 'react';
-import './MobilePage.scss';
 import { Link } from 'react-router-dom';
+
+// Assets
 import trollFaceImage from '../../../src/assets/img/Nope.jpg';
 import { Return } from '../../assets/icons/Icon.jsx';
+
+// Styles
+import './MobilePage.scss';
+
 
 const MobilePage = () => {
 

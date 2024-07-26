@@ -28,7 +28,6 @@ const Profile = () => {
         info,
     });
 
-    // Handle input change
     function handleChange(e) {
         const changedFieldName = e.target.name;
         const newValue = e.target.value;
@@ -38,7 +37,6 @@ const Profile = () => {
         });
     }
 
-    // Update user profile
     const storedToken = localStorage.getItem('token');
     let decodedStoredToken;
     async function updateUserProfile() {
@@ -53,7 +51,6 @@ const Profile = () => {
                 },
             });
             setStatusCode(response.status);
-            // Trigger authState refresh so updated user data is shown on profile page
             toggleNeedsUpdate(true);
         } catch (error) {
             setStatusCode('error');
@@ -61,23 +58,18 @@ const Profile = () => {
         }
     }
 
-    // Handle button click
     function handleClick(e, form) {
         e.preventDefault();
-        // Validate form and set error messages
         const errors = validateForm(formState, form);
         setErrorMessages(errors);
-        // Discard changes
         if (e.target.textContent === 'Discard changes') {
             toggleEdit(!edit);
-            // Update user profile
         } else if (Object.keys(errors).length === 0) {
             updateUserProfile();
             toggleEdit(!edit);
         }
     }
 
-    // Set status message
     useEffect(() => {
         switch (statusCode) {
             case '':

@@ -1,7 +1,13 @@
 import  React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+// Assets
 import { HomeIcon, FavoriteIcon, CollectionIcon, Profile, SunIcon, MoonIcon, Everything, LogOut } from '../../assets/icons/Icon.jsx';
+
+// Context
 import { AuthContext } from '../../context/AuthContext';
+
+// Styles
 import './Header.scss';
 
 const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
