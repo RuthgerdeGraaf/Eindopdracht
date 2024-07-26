@@ -6,8 +6,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    color: $light;
-    overflow: hidden;
     z-index: 10;
 }
 
@@ -27,4 +25,7 @@
     padding-right: 16px;
     padding-top: 8px;
     color: $gold;
+}
+.dark-mode .footer::before {
+    background: linear-gradient(to top left, $darkbluegreen 40%, transparent 60%);
 }
