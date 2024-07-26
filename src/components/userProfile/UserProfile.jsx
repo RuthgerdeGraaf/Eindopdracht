@@ -22,7 +22,7 @@ const UserProfile = ({ statusCode, statusMessage, username, email, info, edit, t
                     </h3>
                     <Button
                         type='button'
-                        buttonText='edit'
+                        buttonText='Change your profile'
                         onClick={() => toggleEdit(!edit)}
                     />
                 </header>

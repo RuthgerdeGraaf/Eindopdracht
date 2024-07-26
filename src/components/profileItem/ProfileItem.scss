@@ -1,3 +1,4 @@
+@import 'src/styles/vars';
 .profile-item-container {
     width: 100%;
     max-width: 500px;
@@ -7,4 +8,5 @@
 
 .profile-item-container p {
     width: 70%;
+    color: $lightbluegreen;
 }
