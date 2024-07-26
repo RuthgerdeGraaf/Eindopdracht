@@ -7,9 +7,6 @@ import { AnswerContext } from '../../context/AnswerContext';
 // Components
 import GameCard from '../../components/gameCard/GameCard';
 
-// Styles
-import './ResultPage.scss';
-
 function ResultPage() {
     const { answers } = useContext(AnswerContext);
     const [games, setGames] = useState([]);
