@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './QuestionPage.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import computerImage from '../../assets/img/Computer.jpeg';
@@ -82,8 +82,12 @@ function QuestionPage() {
   const [message, setMessage] = useState('At any moment you can press this button, to get back to the start!');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    resetAnswers();
+  }, []);
+
   const handleImageClick = (option) => {
-    setAnswers(prevAnswers => [...prevAnswers, option.filter]);
+    setAnswers(prevAnswers => [...prevAnswers, option]);
 
     if (currentQuestion === 0 && option.src === nintendoImage) {
       const updatedQuestions = [...initialQuestions];
@@ -109,7 +113,7 @@ function QuestionPage() {
   return (
     <div>
       <h1>{questions[currentQuestion].question}</h1>
-      <div classname="questions">
+      <div className="questions">
         {questions[currentQuestion].options.map((option, index) => (
           option.link ? (
             <Link key={index} to={option.link}>
