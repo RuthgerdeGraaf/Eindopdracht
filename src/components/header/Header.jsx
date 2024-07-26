@@ -1,6 +1,6 @@
 import  React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { HomeIcon, FavoriteIcon, CollectionIcon, Profile, SunIcon, MoonIcon, Everything } from '../../assets/icons/Icon.jsx';
+import { HomeIcon, FavoriteIcon, CollectionIcon, Profile, SunIcon, MoonIcon, Everything, LogOut } from '../../assets/icons/Icon.jsx';
 import { AuthContext } from '../../context/AuthContext';
 import './Header.scss';
 
@@ -39,7 +39,7 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
                             <li><Link to="/collection"><CollectionIcon />Collection</Link></li>
                             <li><Link to="/everything"><Everything />Everything</Link></li>
                             <li><Link to="/profile"><Profile /> Profile </Link></li>
-                            <li><Link to="/login-and-registration" onClick={logout}> OK DOEI </Link></li>
+                            <li><Link to="/login-and-registration" onClick={logout}><LogOut /> Log out </Link></li>
                         </ul>
                     )}
                 </div>
