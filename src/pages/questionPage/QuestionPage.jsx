@@ -118,47 +118,49 @@ function QuestionPage() {
   };
 
   return (
-    <div>
-      <h1>{questions[currentQuestion].question}</h1>
-      <div className={`questions ${questions[currentQuestion].options.length > 5 ? 'two-rows' : ''}`}>
-        {questions[currentQuestion].options.map((option, index) => (
-          option.link ? (
-            <Link key={index} to={option.link}>
+    <>
+      <div>
+        <h1>{questions[currentQuestion].question}</h1>
+        <div className={`questions ${questions[currentQuestion].options.length > 5 ? 'two-rows' : ''}`}>
+          {questions[currentQuestion].options.map((option, index) => (
+            option.link ? (
+              <Link key={index} to={option.link}>
+                <img
+                  src={option.src}
+                  alt={option.alt}
+                  className="round-image"
+                />
+              </Link>
+            ) : (
               <img
+                key={index}
                 src={option.src}
                 alt={option.alt}
+                onClick={() => handleImageClick(option)}
                 className="round-image"
               />
-            </Link>
-          ) : (
-            <img
-              key={index}
-              src={option.src}
-              alt={option.alt}
-              onClick={() => handleImageClick(option)}
-              className="round-image"
-            />
-          )
-        ))}
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        <h2>Gekozen antwoorden:</h2>
-        <div>
-          {answers.map((answer, index) => (
-            <img
-              key={index}
-              src={answer.src}
-              alt={answer.alt}
-              className="small-round-image"
-            />
+            )
           ))}
         </div>
+        <div style={{ marginTop: '20px' }}>
+          <h2>Gekozen antwoorden:</h2>
+          <div>
+            {answers.map((answer, index) => (
+              <img
+                key={index}
+                src={answer.src}
+                alt={answer.alt}
+                className="small-round-image"
+              />
+            ))}
+          </div>
+        </div>
+        <h3>{message}</h3>
+        <button className='button-return' onClick={handleButtonClick}>
+          <Return />
+        </button>
       </div>
-      <h3>{message}</h3>
-      <button className='button-return' onClick={handleButtonClick}>
-        <Return />
-      </button>
-    </div>
+    </>
   );
 }
 

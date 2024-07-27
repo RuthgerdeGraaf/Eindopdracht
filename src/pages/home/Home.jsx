@@ -16,22 +16,23 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <>
       <div>
-        <h1> Welcome! </h1>
-        <h2>So you don't know what to play ? Enter these questions, and I will suggest games for you </h2>
-        <Link to="/QuestionPage">
-          <img src={startButton} className='round-image' alt="Start quiz" />
-        </Link>
-        
-        
-        
+        <div>
+          <h1> Welcome! </h1>
+          <h2>So you don't know what to play ? Enter these questions, and I will suggest games for you </h2>
+          <Link to="/QuestionPage">
+            <img src={startButton} className='round-image' alt="Start quiz" />
+          </Link>
+        </div>
+        <div>
+          <h3>{message}</h3>
+          <button className='button-return' onClick={handleClick}>
+            <Return />
+          </button>
+        </div>
       </div>
-      <h3>{message}</h3>
-      <button className='button-return' onClick={handleClick}>
-        <Return />
-      </button>
-    </div>
+    </>
   );
 };
 

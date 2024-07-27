@@ -71,19 +71,21 @@ function ResultPage() {
     };
 
     return (
-        <div className="result-page">
-            <h1>Results</h1>
-            {isFallback && <h2>No results found based on your preferences. Maybe you like these games:</h2>}
-            <div className="game-list">
-                {currentGames.map(game => (
-                    <GameCard key={game.id} game={game} />
-                ))}
+        <>
+            <div className="result-page">
+                <h1>Results</h1>
+                {isFallback && <h2>No results found based on your preferences. Maybe you like these games:</h2>}
+                <div className="game-list">
+                    {currentGames.map(game => (
+                        <GameCard key={game.id} game={game} />
+                    ))}
+                </div>
+                <div className="pagination">
+                    <button className="previous" onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
+                    <button className="next" onClick={nextPage} disabled={isFallback ? currentPage * gamesPerPage >= fallbackGames.length : currentPage * gamesPerPage >= games.length}>Next Page</button>
+                </div>
             </div>
-            <div className="pagination">
-                <button className="previous" onClick={prevPage} disabled={currentPage === 1}>Previous Page</button>
-                <button className="next" onClick={nextPage} disabled={isFallback ? currentPage * gamesPerPage >= fallbackGames.length : currentPage * gamesPerPage >= games.length}>Next Page</button>
-            </div>
-        </div>
+        </>
     );
 }
 

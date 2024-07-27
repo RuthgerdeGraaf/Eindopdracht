@@ -79,53 +79,55 @@ const LoginAndRegistration = () => {
     }, [activeTab]);
 
     return (
-        <main>
-            <header>
-                <h2>
-                    Welcome, here you can {activeTab ? 'login' : 'register'}
-                </h2>
-            </header>
-            <div>
+        <>
+            <main>
+                <header>
+                    <h2>
+                        Welcome, here you can {activeTab ? 'login' : 'register'}
+                    </h2>
+                </header>
                 <div>
-                    <button
-                        type='button'
-                        className='tab-button'
-                        onClick={() => { toggleActiveTab(true) }}
-                    >
-                        I have an account
-                    </button>
-                    <button
-                        type='button'
-                        className='tab-button'
-                        onClick={() => { toggleActiveTab(false) }}
-                    >
-                        I am a new customer
-                    </button>
+                    <div>
+                        <button
+                            type='button'
+                            className='tab-button'
+                            onClick={() => { toggleActiveTab(true) }}
+                        >
+                            I have an account
+                        </button>
+                        <button
+                            type='button'
+                            className='tab-button'
+                            onClick={() => { toggleActiveTab(false) }}
+                        >
+                            I am a new customer
+                        </button>
+                    </div>
+                    {
+                        activeTab ?
+                            <Form
+                                form='login'
+                                formState={formState}
+                                handleChange={handleChange}
+                                handleClick={handleClick}
+                                errorMessages={errorMessages}
+                                statusCode={statusCode}
+                                statusMessage={statusMessage}
+                            />
+                            :
+                            <Form
+                                form='registration'
+                                formState={formState}
+                                handleChange={handleChange}
+                                handleClick={handleClick}
+                                errorMessages={errorMessages}
+                                statusCode={statusCode}
+                                statusMessage={statusMessage}
+                            />
+                    }
                 </div>
-                {
-                    activeTab ?
-                        <Form
-                            form='login'
-                            formState={formState}
-                            handleChange={handleChange}
-                            handleClick={handleClick}
-                            errorMessages={errorMessages}
-                            statusCode={statusCode}
-                            statusMessage={statusMessage}
-                        />
-                        :
-                        <Form
-                            form='registration'
-                            formState={formState}
-                            handleChange={handleChange}
-                            handleClick={handleClick}
-                            errorMessages={errorMessages}
-                            statusCode={statusCode}
-                            statusMessage={statusMessage}
-                        />
-                }
-            </div>
-        </main>
+            </main>
+        </>
     );
 }
 

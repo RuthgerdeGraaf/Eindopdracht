@@ -14,33 +14,35 @@ const Filters = ({ onApplyFilters }) => {
     };
 
     return (
-        <div className="filters">
-            <label>
-                Platform:
-                <input
-                    type="text"
-                    value={platform}
-                    onChange={(e) => setPlatform(e.target.value)}
-                />
-            </label>
-            <label>
-                Genre:
-                <input
-                    type="text"
-                    value={genre}
-                    onChange={(e) => setGenre(e.target.value)}
-                />
-            </label>
-            <label>
-                Date Range:
-                <input
-                    type="text"
-                    value={dateRange}
-                    onChange={(e) => setDateRange(e.target.value)}
-                />
-            </label>
-            <button onClick={handleApplyFilters}>Apply Filters</button>
-        </div>
+        <>
+            <div className="filters">
+                <label>
+                    Platform:
+                    <input
+                        type="text"
+                        value={platform}
+                        onChange={(e) => setPlatform(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Genre:
+                    <input
+                        type="text"
+                        value={genre}
+                        onChange={(e) => setGenre(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Date Range:
+                    <input
+                        type="text"
+                        value={dateRange}
+                        onChange={(e) => setDateRange(e.target.value)}
+                    />
+                </label>
+                <button onClick={handleApplyFilters}>Apply Filters</button>
+            </div>
+        </>
     );
 };
 

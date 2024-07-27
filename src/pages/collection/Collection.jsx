@@ -10,18 +10,20 @@ const Collection = () => {
     const { collection } = useCollection();
 
     return (
-        <div>
-            <h1>Your Game Collection</h1>
-            <div className="game-list">
-                {collection.length === 0 ? (
-                    <p>No games in your collection.</p>
-                ) : (
-                    collection.map(game => (
-                        <GameCard key={game.id} game={game} />
-                    ))
-                )}
+        <>
+            <div>
+                <h1>Your Game Collection</h1>
+                <div className="game-list">
+                    {collection.length === 0 ? (
+                        <p>No games in your collection.</p>
+                    ) : (
+                        collection.map(game => (
+                            <GameCard key={game.id} game={game} />
+                        ))
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -85,35 +85,37 @@ const Profile = () => {
     }, [statusCode])
 
     return (
-        <main className='form'>
-            <header>
-                <h1>
-                    User profile
-                </h1>
-            </header>
-            {
-                edit ?
-                    <Form
-                        form='profile'
-                        formState={formState}
-                        handleChange={handleChange}
-                        handleClick={handleClick}
-                        errorMessages={errorMessages}
-                        statusCode={statusCode}
-                        statusMessage={statusMessage}
-                    />
-                    :
-                    <UserProfile
-                        statusCode={statusCode}
-                        statusMessage={statusMessage}
-                        username={username}
-                        email={email}
-                        info={info}
-                        edit={edit}
-                        toggleEdit={toggleEdit}
-                    />
-            }
-        </main>
+        <>
+            <main className='form'>
+                <header>
+                    <h1>
+                        User profile
+                    </h1>
+                </header>
+                {
+                    edit ?
+                        <Form
+                            form='profile'
+                            formState={formState}
+                            handleChange={handleChange}
+                            handleClick={handleClick}
+                            errorMessages={errorMessages}
+                            statusCode={statusCode}
+                            statusMessage={statusMessage}
+                        />
+                        :
+                        <UserProfile
+                            statusCode={statusCode}
+                            statusMessage={statusMessage}
+                            username={username}
+                            email={email}
+                            info={info}
+                            edit={edit}
+                            toggleEdit={toggleEdit}
+                        />
+                }
+            </main>
+        </>
     );
 }
 
