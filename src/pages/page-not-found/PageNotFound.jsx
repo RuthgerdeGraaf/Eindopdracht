@@ -13,29 +13,31 @@ const PageNotFound = () => {
     const navigate = useNavigate();
 
     return (
-        <main className='not-found-container'>
-            <article className='not-found-text-container'>
-                <header>
-                    <h2>
-                        So sorry!
-                    </h2>
-                </header>
-                <p>
-                    The page you are looking for cannot be found.
-                </p>
-                <Button
-                    type='button'
-                    buttonText='Take me home'
-                    onClick={() => navigate('/')}
-                />
-            </article>
-            <div className="not-found-image-container">
-                <img
-                    src={notFoundImage}
-                    alt='Man that is lost'
-                />
-            </div>
-        </main>
+        <>
+            <main className='not-found-container'>
+                <article className='not-found-text-container'>
+                    <header>
+                        <h2>
+                            Sorry!
+                        </h2>
+                    </header>
+                    <p>
+                        The page you are looking for cannot be found.
+                    </p>
+                    <Button
+                        type='button'
+                        buttonText='Take me home'
+                        onClick={() => navigate('/')}
+                    />
+                </article>
+                <div className="not-found-image-container">
+                    <img
+                        src={notFoundImage}
+                        alt='Man that is lost'
+                    />
+                </div>
+            </main>
+        </>
     );
 }
 

@@ -41,65 +41,66 @@ function App() {
   };
 
   return (
-    <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      <Header className="Header" darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <div className="page-wrapper">
-        <div className="page-content">
-          <Routes>
-            <Route
-              path='/'
-              element={isLoggedIn ? <Navigate to ='/home' /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/home'
-              element={isLoggedIn ? <Home /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/login-and-registration'
-              element={isLoggedIn ? <Navigate to='/profile' /> : <LoginAndRegistration />}
-            />
-            <Route
-              path='/profile'
-              element={isLoggedIn ? <Profile /> : <Navigate to='/login-and-registration' />}
-            />
-
-            <Route
-              path='/favorite'
-              element={isLoggedIn ? <Favorite /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/collection'
-              element={isLoggedIn ? <Collection /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/questionPage'
-              element={isLoggedIn ? <QuestionPage /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/resultPage'
-              element={isLoggedIn ? <ResultPage /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/everything'
-              element={isLoggedIn ? <Everything /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/gameDetail'
-              element={isLoggedIn ? <GameDetail /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='/mobilePage'
-              element={isLoggedIn ? <MobilePage /> : <Navigate to='/login-and-registration' />}
-            />
-            <Route
-              path='*'
-              element={<PageNotFound />}
-            />
-          </Routes>
+    <>
+      <div className={`App ${darkMode ? "dark-mode" : ""}`}>
+        <Header className="Header" darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <div className="page-wrapper">
+          <div className="page-content">
+            <Routes>
+              <Route
+                path='/'
+                element={isLoggedIn ? <Navigate to ='/home' /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/home'
+                element={isLoggedIn ? <Home /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/login-and-registration'
+                element={isLoggedIn ? <Navigate to='/profile' /> : <LoginAndRegistration />}
+              />
+              <Route
+                path='/profile'
+                element={isLoggedIn ? <Profile /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/favorite'
+                element={isLoggedIn ? <Favorite /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/collection'
+                element={isLoggedIn ? <Collection /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/questionPage'
+                element={isLoggedIn ? <QuestionPage /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/resultPage'
+                element={isLoggedIn ? <ResultPage /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/everything'
+                element={isLoggedIn ? <Everything /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/gameDetail'
+                element={isLoggedIn ? <GameDetail /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='/mobilePage'
+                element={isLoggedIn ? <MobilePage /> : <Navigate to='/login-and-registration' />}
+              />
+              <Route
+                path='*'
+                element={<PageNotFound />}
+              />
+            </Routes>
+          </div>
         </div>
+        <PageFooter />
       </div>
-      <PageFooter />
-    </div>
+    </>
   );
 }
 

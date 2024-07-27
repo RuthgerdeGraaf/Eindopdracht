@@ -24,33 +24,35 @@ const Header = ({ darkMode, toggleDarkMode, onHomeClick }) => {
     };
 
     return (
-        <header className='header'>
-            <div>
-                <h1>What to play</h1>
-            </div>
-            <button className="dark-mode-button" onClick={toggleDarkMode}>
-                {darkMode ? <SunIcon /> : <MoonIcon />}
-            </button>
-            <nav>
-                <div 
-                    className="dropdown-menu" 
-                    onMouseEnter={handleMouseEnter} 
-                    onMouseLeave={handleMouseLeave}
-                >
-                    Go 2
-                    {isOpen && (
-                        <ul className="dropdown">
-                            <li><Link to="/home" onClick={onHomeClick}><HomeIcon />Home</Link></li>
-                            <li><Link to="/favorite"><FavoriteIcon />Favorite</Link></li>
-                            <li><Link to="/collection"><CollectionIcon />Collection</Link></li>
-                            <li><Link to="/everything"><Everything />Everything</Link></li>
-                            <li><Link to="/profile"><Profile /> Profile </Link></li>
-                            <li><Link to="/login-and-registration" onClick={logout}><LogOut /> Log out </Link></li>
-                        </ul>
-                    )}
+        <>
+            <header className='header'>
+                <div>
+                    <h1>What to play</h1>
                 </div>
-            </nav>
-        </header>
+                <button className="dark-mode-button" onClick={toggleDarkMode}>
+                    {darkMode ? <SunIcon /> : <MoonIcon />}
+                </button>
+                <nav>
+                    <div 
+                        className="dropdown-menu" 
+                        onMouseEnter={handleMouseEnter} 
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        Go 2
+                        {isOpen && (
+                            <ul className="dropdown">
+                                <li><Link to="/home" onClick={onHomeClick}><HomeIcon />Home</Link></li>
+                                <li><Link to="/favorite"><FavoriteIcon />Favorite</Link></li>
+                                <li><Link to="/collection"><CollectionIcon />Collection</Link></li>
+                                <li><Link to="/everything"><Everything />Everything</Link></li>
+                                <li><Link to="/profile"><Profile /> Profile </Link></li>
+                                <li><Link to="/login-and-registration" onClick={logout}><LogOut /> Log out </Link></li>
+                            </ul>
+                        )}
+                    </div>
+                </nav>
+            </header>
+        </>
     );
 };
 

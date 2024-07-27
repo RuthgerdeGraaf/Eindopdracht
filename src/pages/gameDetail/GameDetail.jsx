@@ -24,11 +24,13 @@ const GameDetail = () => {
     }
 
     return (
-        <div>
-            <h1>{game.name}</h1>
-            <img src={game.background_image} alt={game.name} />
-            <p>Released: {game.released}</p>
-        </div>
+        <>
+            <div>
+                <h1>{game.name}</h1>
+                <img src={game.background_image} alt={game.name} />
+                <p>Released: {game.released}</p>
+            </div>
+        </>
     );
 };
 
