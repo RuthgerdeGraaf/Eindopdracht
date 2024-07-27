@@ -15,11 +15,16 @@ GitHub repository: https://github.com/RuthgerdeGraaf/Eindopdracht
 
 This project was made as a final assignment for the NOVI bootcamp Web Developer Frontend Bootcamp. I created an app where users can figure out what to play through a couple of questions. I used [RAWGApi](https://rawg.io/apidocs) and the [NOVI Educational Backend](https://novi.datavortex.nl/). Users can:
 
-- Create a user account and edit account information
-- See their user profile (logged in users only)
-- Login and logout
+- Create an account.
+
+From here on, only when user is logged in.
+
+- Login
+- Play the Quiz.
+- See their user profile and add info about themselves.
+- Logout
+- Go to all the gameslibrary. 
 - Add / remove games to their favorite / collection list
-- Add some info about themselves
 - Hover over games to get more information about it
 - Get trolled when they think they're gamers on mobilephones
 
